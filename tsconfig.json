@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Version JavaScript cible
+    "module": "esnext", // Système de modules
+    "strict": true, // Activer les vérifications strictes
+    "esModuleInterop": true, // Compatibilité ES modules
+    "skipLibCheck": true, // Ignorer la vérification des types de bibliothèques
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Répertoire de sortie pour les fichiers compilés
+    "rootDir": "./src", // Répertoire racine pour les fichiers source
+    "baseUrl": ".", // Base des chemins relatifs
+    "paths": {
+      "@pages/*": ["src/pages/*"] // Alias pour les pages
+    }
+  },
+  "include": ["src/**/*"], // Inclure tous les fichiers TypeScript dans src
+  "exclude": ["node_modules"] // Exclure node_modules
+}
