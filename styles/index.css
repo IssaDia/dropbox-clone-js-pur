@@ -1,0 +1,44 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  background-color: #f7f5f1;
+  border-right: 1px solid #bbb5ae;
+  padding: 10px;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  background-color: #f7f5f1;
+  border-bottom: 1px solid #bbb5ae;
+  padding: 10px;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}

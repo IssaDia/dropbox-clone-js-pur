@@ -18,11 +18,16 @@ export default {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // Chemin vers le fichier HTML d'entrée
+      template: "./src/index.html",
+      inject: false,
     }),
   ],
   mode: "development", // Mode de développement

@@ -1,4 +1,6 @@
-export const createElement = (
+import { CreateElementOptions } from "../interface/CreateElementOptions";
+
+export const createCustomHtmlElement = (
   tagName: string,
   options?: CreateElementOptions
 ): HTMLElement => {
