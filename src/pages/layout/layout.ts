@@ -1,11 +1,19 @@
 import { createCustomHtmlElement } from "../../utils/domUtils";
+import { createSidebar } from "../../components/sidebar";
+import { createLogo } from "../../components/logo";
 
-export const appLayout = () => {
+export const appLayout = (): void => {
   const root = document.getElementById("root");
-  const container = createCustomHtmlElement("div", { classes: ["container"] });
+  const container = createCustomHtmlElement("div", {
+    classes: ["container"],
+  });
   root?.appendChild(container);
-  const sidebar = createCustomHtmlElement("div", { classes: ["sidebar"] });
-  container?.appendChild(sidebar);
+  const sidebarContainer = createCustomHtmlElement("div", {
+    classes: ["sidebar-container"],
+  });
+  container?.appendChild(sidebarContainer);
+  createSidebar();
+  // createLogo();
   const navbar = createCustomHtmlElement("div", { classes: ["navbar"] });
   const main = createCustomHtmlElement("div", { classes: ["main"] });
   const mainContent = createCustomHtmlElement("div", {
