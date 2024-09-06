@@ -1,6 +1,6 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 export default {
   entry: "./src/index.ts", // Point d'entrée de ton application
   output: {
@@ -19,8 +19,12 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.hbs$/,
+        loader: "handlebars-loader",
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
@@ -29,7 +33,11 @@ export default {
       template: "./src/index.html",
       inject: false,
     }),
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+    }),
   ],
+
   mode: "development", // Mode de développement
   devServer: {
     static: path.resolve("dist"), // Répertoire de contenu statique
