@@ -1,12 +1,10 @@
-import { loadHomePage } from "./pages/home";
-import { appLayout } from "./pages/layout/layout";
-import "../styles/index.css";
+import nunjucks from "nunjucks";
+import { router } from "./router";
 
-const init = () => {
-  if (window.location.pathname === "/") {
-    appLayout();
-    loadHomePage();
-  }
-};
+// Configuration de Nunjucks pour charger les templates
+nunjucks.configure("/templates", { autoescape: true, watch: true });
 
-document.addEventListener("DOMContentLoaded", init);
+// Gestion du router à chaque changement de page
+document.addEventListener("DOMContentLoaded", router);
+
+window.addEventListener("popstate", router);
