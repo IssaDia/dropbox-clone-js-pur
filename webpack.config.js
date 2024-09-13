@@ -1,5 +1,10 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default {
   entry: "./src/index.ts", // Point d'entrée de ton application
@@ -26,14 +31,21 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./public/index.html",
       inject: false,
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/templates", to: "templates" }, // Copie les templates dans le répertoire de sortie
+      ],
     }),
   ],
   mode: "development", // Mode de développement
   devServer: {
-    static: path.resolve("dist"), // Répertoire de contenu statique
-    compress: true,
-    port: 8080,
+    static: path.resolve(__dirname, "dist"), // Où sont tes fichiers statiques
+    compress: true, // Active la compression gzip
+    port: 8080, // Le port où le serveur sera lancé
+    open: true, // Ouvre automatiquement le navigateur
+    hot: true, // Active le Hot Module Replacement
   },
 };

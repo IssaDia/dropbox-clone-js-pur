@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es6", // Version JavaScript cible
-    "module": "esnext", // Système de modules
+    "module": "ESNext", // Système de modules
+    "target": "ES6", // Version JavaScript cible
     "strict": true, // Activer les vérifications strictes
+    "moduleResolution": "node",
     "esModuleInterop": true, // Compatibilité ES modules
     "skipLibCheck": true, // Ignorer la vérification des types de bibliothèques
     "forceConsistentCasingInFileNames": true,
