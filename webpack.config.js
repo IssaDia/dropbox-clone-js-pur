@@ -1,10 +1,8 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default {
   entry: "./src/index.ts", // Point d'entrée de ton application
@@ -24,8 +22,12 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.hbs$/,
+        loader: "handlebars-loader",
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
@@ -34,12 +36,16 @@ export default {
       template: "./public/index.html",
       inject: false,
     }),
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+    }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: "src/templates", to: "templates" }, // Copie les templates dans le répertoire de sortie
+        { from: path.resolve("src/templates"), to: "templates" }, // Copier tous les fichiers de 'src/templates' vers 'dist/templates'
       ],
     }),
   ],
+
   mode: "development", // Mode de développement
   devServer: {
     static: path.resolve(__dirname, "dist"), // Où sont tes fichiers statiques

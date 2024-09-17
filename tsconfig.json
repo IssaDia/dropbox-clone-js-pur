@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "ESNext", // Système de modules
-    "target": "ES6", // Version JavaScript cible
+    "target": "es6", // Version JavaScript cible
+    "module": "nodenext", // Système de modules
     "strict": true, // Activer les vérifications strictes
     "moduleResolution": "node",
     "esModuleInterop": true, // Compatibilité ES modules
@@ -11,8 +11,9 @@
     "rootDir": "./src", // Répertoire racine pour les fichiers source
     "baseUrl": ".", // Base des chemins relatifs
     "paths": {
-      "@pages/*": ["src/pages/*"] // Alias pour les pages
-    }
+      "@pages/*": ["src/templates/*"] // Alias pour les pages
+    },
+    "moduleResolution": "nodenext"
   },
   "include": ["src/**/*"], // Inclure tous les fichiers TypeScript dans src
   "exclude": ["node_modules"] // Exclure node_modules

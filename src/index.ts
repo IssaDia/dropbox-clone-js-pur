@@ -1,10 +1,24 @@
-import nunjucks from "nunjucks";
-import { router } from "./router";
+import "../styles/index.css";
+import Handlebars from "handlebars";
+import homeTemplate from "./templates/home.hbs";
 
-// Configuration de Nunjucks pour charger les templates
-nunjucks.configure("/templates", { autoescape: true, watch: true });
+interface Routes {
+  [key: string]: Handlebars.TemplateDelegate;
+}
 
-// Gestion du router à chaque changement de page
-document.addEventListener("DOMContentLoaded", router);
+const routes: Routes = {
+  "/": homeTemplate as unknown as Handlebars.TemplateDelegate,
+};
 
-window.addEventListener("popstate", router);
+export const router = async () => {
+  const path = window.location.pathname;
+
+  const template = routes[path] || homeTemplate;
+
+  const html = template({});
+
+  document.body.innerHTML = html;
+};
+
+router();
+
