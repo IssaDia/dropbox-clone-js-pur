@@ -3,26 +3,21 @@ import Handlebars from "handlebars";
 import homeTemplate from "./templates/home.hbs";
 
 interface Routes {
-  [key: string]: string;
+  [key: string]: Handlebars.TemplateDelegate;
 }
 
 const routes: Routes = {
-  "/": homeTemplate,
+  "/": homeTemplate as unknown as Handlebars.TemplateDelegate,
 };
 
 export const router = async () => {
   const path = window.location.pathname;
+
   const template = routes[path] || homeTemplate;
 
-  const data = {
-    title: "Dynamic Project Title",
-    header: "Dynamic Header Content",
-    content: "This content is dynamically loaded.",
-    year: new Date().getFullYear(),
-  };
-
-  const compiledTemplate = Handlebars.compile(template);
-  const html = compiledTemplate(data);
+  const html = template({});
 
   document.body.innerHTML = html;
 };
+
+router();

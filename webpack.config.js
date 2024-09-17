@@ -1,6 +1,8 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+
 export default {
   entry: "./src/index.ts", // Point d'entrée de ton application
   output: {
@@ -35,6 +37,11 @@ export default {
     }),
     new MiniCssExtractPlugin({
       filename: "styles.css",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve("src/templates"), to: "templates" }, // Copier tous les fichiers de 'src/templates' vers 'dist/templates'
+      ],
     }),
   ],
 
