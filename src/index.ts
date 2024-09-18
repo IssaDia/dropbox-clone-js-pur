@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import Handlebars from "handlebars";
-import homeTemplate from "./templates/home.hbs";
+import homeTemplate from "./templates/home/index.hbs";
 
 interface Routes {
   [key: string]: Handlebars.TemplateDelegate;
@@ -21,4 +21,3 @@ export const router = async () => {
 };
 
 router();
-
