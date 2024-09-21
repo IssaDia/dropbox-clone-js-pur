@@ -29,22 +29,30 @@ export default {
         loader: "handlebars-loader",
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.scss$/, // Traiter les fichiers SCSS
+        use: [
+          MiniCssExtractPlugin.loader, // Extrait le CSS dans un fichier séparé
+          "css-loader", // Interprète le CSS
+          "sass-loader", // Compile SCSS en CSS
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      inject: false,
+      template: "./src/presentation/templates/login/index.hbs",
+      filename: "login.html", // Output HTML file
+      chunks: ["login"], // Match the entry point
     }),
     new MiniCssExtractPlugin({
-      filename: "styles.css",
+      filename: "[name].scss", // Generate `login.css`, etc.
+    }),
+    new MiniCssExtractPlugin({
+      filename: "styles/[name].css",
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: path.resolve("src/templates"), to: "templates" }, // Copier tous les fichiers de 'src/templates' vers 'dist/templates'
+        { from: path.resolve("src/presentation/templates"), to: "templates" },
       ],
     }),
   ],

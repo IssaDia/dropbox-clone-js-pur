@@ -1,19 +1,19 @@
 import "../styles/index.css";
 import Handlebars from "handlebars";
-import homeTemplate from "./templates/home/index.hbs";
+import loginTemplate from "./presentation/templates/login/index.hbs";
 
 interface Routes {
   [key: string]: Handlebars.TemplateDelegate;
 }
 
 const routes: Routes = {
-  "/": homeTemplate as unknown as Handlebars.TemplateDelegate,
+  "/": loginTemplate as unknown as Handlebars.TemplateDelegate,
 };
 
 export const router = async () => {
   const path = window.location.pathname;
 
-  const template = routes[path] || homeTemplate;
+  const template = routes[path] || loginTemplate;
 
   const html = template({});
 
