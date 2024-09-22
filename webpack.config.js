@@ -2,7 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,7 +15,10 @@ export default {
     clean: true, // Nettoyer le répertoire de sortie avant chaque build
   },
   resolve: {
-    extensions: [".ts", ".js"], // Extensions à traiter
+    extensions: [".ts", ".js", ".hbs", ".scss"],
+    alias: {
+      "@pages": path.resolve(__dirname, "src/presentation/templates/"),
+    },
   },
   module: {
     rules: [
@@ -41,21 +44,26 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/presentation/templates/login/index.hbs",
-      filename: "login.html", // Output HTML file
-      chunks: ["login"], // Match the entry point
+      filename: "index.html", // Output HTML file
+
+      inject: "body",
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].scss", // Generate `login.css`, etc.
+      filename: "styles.min.css", // Generate `login.css`, etc.
     }),
-    new MiniCssExtractPlugin({
-      filename: "styles/[name].css",
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: path.resolve("src/presentation/templates"), to: "templates" },
-      ],
-    }),
+
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     { from: path.resolve("src/presentation/templates"), to: "templates" },
+    //   ],
+    // }),
   ],
+  optimization: {
+    minimizer: [
+      "...", // Utiliser les minimizers par défaut (terser pour JS)
+      new CssMinimizerPlugin(), // Minifier le CSS
+    ],
+  },
 
   mode: "development", // Mode de développement
   devServer: {

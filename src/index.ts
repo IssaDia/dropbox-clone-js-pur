@@ -1,7 +1,6 @@
-import "../styles/index.css";
 import Handlebars from "handlebars";
 import loginTemplate from "./presentation/templates/login/index.hbs";
-
+import "./styles/main.scss";
 interface Routes {
   [key: string]: Handlebars.TemplateDelegate;
 }
@@ -12,6 +11,8 @@ const routes: Routes = {
 
 export const router = async () => {
   const path = window.location.pathname;
+
+  console.log(path);
 
   const template = routes[path] || loginTemplate;
 
