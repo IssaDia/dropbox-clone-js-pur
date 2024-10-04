@@ -9,6 +9,16 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/presentation/templates/dashboard/index.hbs":
+/*!********************************************************!*\
+  !*** ./src/presentation/templates/dashboard/index.hbs ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var Handlebars = __webpack_require__(/*! ../../../../node_modules/handlebars/runtime.js */ \"./node_modules/handlebars/runtime.js\");\nfunction __default(obj) { return obj && (obj.__esModule ? obj[\"default\"] : obj); }\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[8,\">= 4.3.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    return \"<main>\\n  <h2>Welcome to the Home Page</h2>\\n  <p>This is the content of the home page.</p>\\n</main>\\n/* faire un layout */\";\n},\"useData\":true});\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/dashboard/index.hbs?");
+
+/***/ }),
+
 /***/ "./src/presentation/templates/login/index.hbs":
 /*!****************************************************!*\
   !*** ./src/presentation/templates/login/index.hbs ***!
@@ -260,6 +270,17 @@ eval("// Create a simple path alias to allow browserify to resolve\n// the runti
 
 /***/ }),
 
+/***/ "./src/presentation/templates/dashboard/index.scss":
+/*!*********************************************************!*\
+  !*** ./src/presentation/templates/dashboard/index.scss ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/dashboard/index.scss?");
+
+/***/ }),
+
 /***/ "./src/presentation/templates/login/index.scss":
 /*!*****************************************************!*\
   !*** ./src/presentation/templates/login/index.scss ***!
@@ -293,6 +314,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 
 /***/ }),
 
+/***/ "./src/presentation/templates/dashboard/index.ts":
+/*!*******************************************************!*\
+  !*** ./src/presentation/templates/dashboard/index.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/presentation/templates/dashboard/index.scss\");\n\nconst dashboardTemplate = __webpack_require__(/*! ./index.hbs */ \"./src/presentation/templates/dashboard/index.hbs\");\nconst dashboard = () => {\n    const html = dashboardTemplate({});\n    return html;\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dashboard);\n\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/dashboard/index.ts?");
+
+/***/ }),
+
 /***/ "./src/presentation/templates/login/index.ts":
 /*!***************************************************!*\
   !*** ./src/presentation/templates/login/index.ts ***!
@@ -311,7 +343,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   router: () => (/* binding */ router)\n/* harmony export */ });\n/* harmony import */ var _presentation_templates_login_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./presentation/templates/login/index */ \"./src/presentation/templates/login/index.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\nconst routes = {\n    \"/\": _presentation_templates_login_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n};\nconst router = () => __awaiter(void 0, void 0, void 0, function* () {\n    const path = window.location.pathname;\n    const render = routes[path] || routes[\"/\"];\n    document.body.innerHTML = render();\n});\n\n\n//# sourceURL=webpack://dropbox/./src/router.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   router: () => (/* binding */ router)\n/* harmony export */ });\n/* harmony import */ var _presentation_templates_login_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./presentation/templates/login/index */ \"./src/presentation/templates/login/index.ts\");\n/* harmony import */ var _presentation_templates_dashboard_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./presentation/templates/dashboard/index */ \"./src/presentation/templates/dashboard/index.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\n\nconst routes = {\n    \"/\": _presentation_templates_login_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n    \"/dashboard\": _presentation_templates_dashboard_index__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n};\nconst router = () => __awaiter(void 0, void 0, void 0, function* () {\n    const path = window.location.pathname;\n    console.log(path);\n    const render = routes[path] || routes[\"/\"];\n    document.body.innerHTML = render();\n});\n\n\n//# sourceURL=webpack://dropbox/./src/router.ts?");
 
 /***/ })
 

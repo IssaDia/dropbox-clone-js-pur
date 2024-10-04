@@ -70,5 +70,6 @@ export default {
     open: true, // Ouvre automatiquement le navigateur
     hot: true, // Active le Hot Module Replacement
     watchFiles: ["src/**/*", "public/**/*"],
+    historyApiFallback: true,
   },
 };

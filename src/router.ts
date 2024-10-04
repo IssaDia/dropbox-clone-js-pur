@@ -1,5 +1,5 @@
 import login from "./presentation/templates/login/index";
-import dashboard from "./presentation/templates/dashboard/index.hbs";
+import dashboard from "./presentation/templates/dashboard/index";
 
 interface Routes {
   [key: string]: () => string;
@@ -7,10 +7,13 @@ interface Routes {
 
 const routes: Routes = {
   "/": login,
+  "/dashboard": dashboard,
 };
 
 export const router = async () => {
   const path = window.location.pathname;
+
+  console.log(path);
 
   const render = routes[path] || routes["/"];
 
