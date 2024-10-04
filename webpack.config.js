@@ -9,17 +9,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: "./src/index.ts", // Point d'entrée de ton application
+  entry: "./src/index.ts",
   output: {
-    filename: "bundle.js", // Nom du fichier de sortie
-    path: path.resolve("dist"), // Répertoire de sortie
-    clean: true, // Nettoyer le répertoire de sortie avant chaque build
+    filename: "bundle.js",
+    path: path.resolve("dist"),
+    clean: true,
   },
   resolve: {
     extensions: [".ts", ".js", ".hbs", ".scss"],
-    alias: {
-      "@pages": path.resolve(__dirname, "src/presentation/templates/"),
-    },
   },
   module: {
     rules: [
@@ -30,7 +27,7 @@ export default {
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars-loader",
+        use: "handlebars-loader",
       },
       {
         test: /\.scss$/, // Traiter les fichiers SCSS
@@ -45,8 +42,7 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/presentation/templates/login/index.hbs",
-      filename: "index.html", // Output HTML file
-
+      filename: "index.html",
       inject: "body",
     }),
     new MiniCssExtractPlugin({
@@ -73,5 +69,6 @@ export default {
     port: 8080, // Le port où le serveur sera lancé
     open: true, // Ouvre automatiquement le navigateur
     hot: true, // Active le Hot Module Replacement
+    watchFiles: ["src/**/*", "public/**/*"],
   },
 };

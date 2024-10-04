@@ -87,18 +87,20 @@
     cursor: pointer;
 
     &--google {
-      background-color: #4285f4;
-      color: white;
+      background-color: #fff;
+      color: #333;
     }
 
     &--apple {
-      background-color: #000;
-      color: white;
+      background-color: #fff;
+      color: #333;
+      border-color: #ccc;
     }
 
     &--submit {
       background-color: #007ee5;
       color: white;
+      border-color: #ccc;
     }
   }
 

@@ -15,7 +15,7 @@
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var Handlebars = __webpack_require__(/*! ../../../../node_modules/handlebars/runtime.js */ \"./node_modules/handlebars/runtime.js\");\nfunction __default(obj) { return obj && (obj.__esModule ? obj[\"default\"] : obj); }\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[8,\">= 4.3.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    return \"<html lang=\\\"fr\\\">\\n  <head>\\n    <meta charset=\\\"UTF-8\\\" />\\n    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\" />\\n    <link\\n      href=\\\"https://fonts.googleapis.com/icon?family=Material+Icons\\\"\\n      rel=\\\"stylesheet\\\"\\n    />\\n\\n    <title>Se connecter</title>\\n  </head>\\n  <body>\\n    <div class=\\\"container\\\">\\n      <!-- Header -->\\n      <header class=\\\"header\\\">\\n        <div class=\\\"header__logo\\\">\\n          <a href=\\\"/\\\" class=\\\"header__logo-link\\\">\\n            <img\\n              class=\\\"header__logo-icon\\\"\\n              src=\\\"/images/dropbox_logo.jpg\\\"\\n              alt=\\\"Dropbox Logo\\\"\\n            />\\n            <p class=\\\"header__logo-text\\\">Dropbox</p>\\n          </a>\\n        </div>\\n        <div class=\\\"header__language\\\">\\n          <i class=\\\"fa fa-globe\\\"></i>\\n\\n        </div>\\n      </header>\\n\\n      <!-- Main content -->\\n      <main class=\\\"main\\\">\\n        <h1 class=\\\"main__title\\\">Connexion ou inscription</h1>\\n        <div class=\\\"main__buttons\\\">\\n          <button class=\\\"main__button main__button--google\\\">\\n            Connexion via Google\\n          </button>\\n          <button class=\\\"main__button main__button--apple\\\">\\n            Connexion via Apple\\n          </button>\\n        </div>\\n\\n        <div class=\\\"main__separator\\\">\\n          <span class=\\\"main__line\\\"></span>\\n          <span class=\\\"main__text\\\">ou</span>\\n          <span class=\\\"main__line\\\"></span>\\n        </div>\\n\\n        <form class=\\\"main__form\\\">\\n          <input\\n            type=\\\"email\\\"\\n            class=\\\"main__input\\\"\\n            placeholder=\\\"Adresse e-mail\\\"\\n            required\\n          />\\n          <button type=\\\"submit\\\" class=\\\"main__button main__button--submit\\\">\\n            Continuer\\n          </button>\\n        </form>\\n\\n        <div class=\\\"main__privacy\\\">\\n          <a href=\\\"#\\\">Confidentialité et conditions</a>\\n          |\\n          <a href=\\\"#\\\">Politique en matière de cookies</a>\\n          |\\n          <a href=\\\"#\\\">Préférences concernant les cookies et CCPA</a>\\n          |\\n          <a href=\\\"#\\\">Principes en matière d’IA</a>\\n        </div>\\n      </main>\\n\\n      <!-- Footer -->\\n      <footer class=\\\"footer\\\">\\n        <div class=\\\"footer__language\\\">\\n          <span class=\\\"footer__language-icon\\\">🌍</span>\\n          <span class=\\\"footer__language-text\\\">Français (France)</span>\\n          <span class=\\\"footer__language-chevron\\\">›</span>\\n        </div>\\n      </footer>\\n    </div>\\n  </body>\\n</html>\";\n},\"useData\":true});\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/login/index.hbs?");
+eval("var Handlebars = __webpack_require__(/*! ../../../../node_modules/handlebars/runtime.js */ \"./node_modules/handlebars/runtime.js\");\nfunction __default(obj) { return obj && (obj.__esModule ? obj[\"default\"] : obj); }\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[8,\">= 4.3.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=\"function\", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {\n        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {\n          return parent[propertyName];\n        }\n        return undefined\n    };\n\n  return \"<html lang=\\\"fr\\\">\\n  <head>\\n    <meta charset=\\\"UTF-8\\\" />\\n    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\" />\\n    <link\\n      href=\\\"https://fonts.googleapis.com/icon?family=Material+Icons\\\"\\n      rel=\\\"stylesheet\\\"\\n    />\\n\\n    <title>Se connecter</title>\\n  </head>\\n  <body>\\n    <div class=\\\"container\\\">\\n      <!-- Header -->\\n      <header class=\\\"header\\\">\\n        <div class=\\\"header__logo\\\">\\n          <a href=\\\"/\\\" class=\\\"header__logo-link\\\">\\n            <img\\n              class=\\\"header__logo-icon\\\"\\n              src=\\\"/images/dropbox_logo.jpg\\\"\\n              alt=\\\"Dropbox Logo\\\"\\n            />\\n            <p class=\\\"header__logo-text\\\">Dropbox</p>\\n          </a>\\n        </div>\\n        <div class=\\\"header__language\\\">\\n          <i class=\\\"fa fa-globe\\\"></i>\\n\\n        </div>\\n      </header>\\n\\n      <!-- Main content -->\\n      <main class=\\\"main\\\">\\n        <h1 class=\\\"main__title\\\">Log in or sign up</h1>\\n        <div class=\\\"main__buttons\\\">\\n          <button class=\\\"main__button main__button--google\\\">\\n            Continue with Google\\n          </button>\\n          <button class=\\\"main__button main__button--apple\\\">\\n            Continue with Apple 2\\n          </button>\\n        </div>\\n\\n        \"\n    + alias4(((helper = (helper = lookupProperty(helpers,\"test\") || (depth0 != null ? lookupProperty(depth0,\"test\") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{\"name\":\"test\",\"hash\":{},\"data\":data,\"loc\":{\"start\":{\"line\":44,\"column\":8},\"end\":{\"line\":44,\"column\":16}}}) : helper)))\n    + \"\\n\\n        <div class=\\\"main__separator\\\">\\n          <span class=\\\"main__line\\\"></span>\\n          <span class=\\\"main__text\\\">ou</span>\\n          <span class=\\\"main__line\\\"></span>\\n        </div>\\n\\n        <form class=\\\"main__form\\\">\\n          <input\\n            type=\\\"email\\\"\\n            class=\\\"main__input\\\"\\n            placeholder=\\\"Adresse e-mail\\\"\\n            required\\n          />\\n          <button type=\\\"submit\\\" class=\\\"main__button main__button--submit\\\">\\n            Continuer\\n          </button>\\n        </form>\\n\\n        <div class=\\\"main__privacy\\\">\\n          <a href=\\\"#\\\">Confidentialité et conditions</a>\\n          |\\n          <a href=\\\"#\\\">Politique en matière de cookies</a>\\n          |\\n          <a href=\\\"#\\\">Préférences concernant les cookies et CCPA</a>\\n          |\\n          <a href=\\\"#\\\">Principes en matière d’IA</a>\\n        </div>\\n      </main>\\n\\n      \"\n    + alias4(((helper = (helper = lookupProperty(helpers,\"name\") || (depth0 != null ? lookupProperty(depth0,\"name\") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{\"name\":\"name\",\"hash\":{},\"data\":data,\"loc\":{\"start\":{\"line\":75,\"column\":6},\"end\":{\"line\":75,\"column\":14}}}) : helper)))\n    + \"\\n\\n      <!-- Footer -->\\n      <footer class=\\\"footer\\\">\\n        <div class=\\\"footer__language\\\">\\n          <span class=\\\"footer__language-icon\\\">🌍</span>\\n          <span class=\\\"footer__language-text\\\">Français (France)</span>\\n          <span class=\\\"footer__language-chevron\\\">›</span>\\n        </div>\\n      </footer>\\n    </div>\\n    <script src=\\\"bundle.js\\\"></script>\\n  </body>\\n</html>\";\n},\"useData\":true});\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/login/index.hbs?");
 
 /***/ }),
 
@@ -260,6 +260,17 @@ eval("// Create a simple path alias to allow browserify to resolve\n// the runti
 
 /***/ }),
 
+/***/ "./src/presentation/templates/login/index.scss":
+/*!*****************************************************!*\
+  !*** ./src/presentation/templates/login/index.scss ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/login/index.scss?");
+
+/***/ }),
+
 /***/ "./src/styles/main.scss":
 /*!******************************!*\
   !*** ./src/styles/main.scss ***!
@@ -278,7 +289,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   router: () => (/* binding */ router)\n/* harmony export */ });\n/* harmony import */ var _presentation_templates_login_index_hbs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./presentation/templates/login/index.hbs */ \"./src/presentation/templates/login/index.hbs\");\n/* harmony import */ var _presentation_templates_login_index_hbs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_presentation_templates_login_index_hbs__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\n\nconst routes = {\n    \"/\": (_presentation_templates_login_index_hbs__WEBPACK_IMPORTED_MODULE_0___default()),\n};\nconst router = () => __awaiter(void 0, void 0, void 0, function* () {\n    const path = window.location.pathname;\n    const template = routes[path] || (_presentation_templates_login_index_hbs__WEBPACK_IMPORTED_MODULE_0___default());\n    const html = template({});\n    document.body.innerHTML = html;\n});\nrouter();\n\n\n//# sourceURL=webpack://dropbox/./src/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ \"./src/router.ts\");\n\n\nconst startApp = () => {\n    (0,_router__WEBPACK_IMPORTED_MODULE_1__.router)();\n};\nstartApp();\n\n\n//# sourceURL=webpack://dropbox/./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/presentation/templates/login/index.ts":
+/*!***************************************************!*\
+  !*** ./src/presentation/templates/login/index.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/presentation/templates/login/index.scss\");\n\nconst loginTemplate = __webpack_require__(/*! ./index.hbs */ \"./src/presentation/templates/login/index.hbs\");\nconst login = () => {\n    const html = loginTemplate({});\n    return html;\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (login);\n\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/login/index.ts?");
+
+/***/ }),
+
+/***/ "./src/router.ts":
+/*!***********************!*\
+  !*** ./src/router.ts ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   router: () => (/* binding */ router)\n/* harmony export */ });\n/* harmony import */ var _presentation_templates_login_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./presentation/templates/login/index */ \"./src/presentation/templates/login/index.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\nconst routes = {\n    \"/\": _presentation_templates_login_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n};\nconst router = () => __awaiter(void 0, void 0, void 0, function* () {\n    const path = window.location.pathname;\n    const render = routes[path] || routes[\"/\"];\n    document.body.innerHTML = render();\n});\n\n\n//# sourceURL=webpack://dropbox/./src/router.ts?");
 
 /***/ })
 
@@ -309,18 +342,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
