@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
   width: 100%;
   height: 100%;
@@ -9,13 +15,13 @@
 
 .header {
   width: 100%;
-  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 60px;
   background-color: #ffffff;
   border-bottom: 1px solid #ccc;
+  padding: 10px;
 
   &__logo-link {
     display: flex;
@@ -30,8 +36,8 @@
   }
 
   &__logo-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
   &__logo-text {
@@ -39,6 +45,7 @@
     margin-left: 10px;
     color: #333;
     font-weight: bold;
+    font-family: "Montserrat", sans-serif;
   }
 
   &__language {
@@ -60,41 +67,52 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-grow: 1;
   padding: 20px;
+  margin-top: 50px;
 
   &__title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
   }
 
   &__buttons {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
     margin-bottom: 20px;
   }
 
   &__button {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    border: 1px solid #eee;
+    color: #333;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 
+    &__icon {
+      position: absolute;
+      left: 10px;
+    }
+
+    &--apple,
     &--google {
       background-color: #fff;
       color: #333;
-    }
-
-    &--apple {
-      background-color: #fff;
-      color: #333;
-      border-color: #ccc;
+      justify-content: center;
+      padding-left: 40px;
     }
 
     &--submit {
