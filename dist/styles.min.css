@@ -1,3 +1,11 @@
+/*!***************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss ***!
+  \***************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap);
+/*!**************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/login/index.scss ***!
+  \**************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap);
 /*!**************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/font-awesome/css/font-awesome.css ***!
   \**************************************************************************************************/
@@ -2339,9 +2347,9 @@
   clip: auto;
 }
 
-/*!***************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss ***!
-  \***************************************************************************************************************/
+/*!*******************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss (1) ***!
+  \*******************************************************************************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -2508,37 +2516,48 @@
   border: 1px solid #ccc;
 }
 .main__privacy {
-  margin-top: 20px;
-  text-align: center;
+  margin-top: 200px;
+  display: flex;
+  align-items: left;
 }
 .main__privacy a {
-  color: #007ee5;
   text-decoration: none;
   margin: 0 5px;
+  color: #1e1919;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+}
+.main__privacy a:hover {
+  text-decoration: underline;
+}
+.main__privacy__separator {
+  width: 15%;
+  height: 1px;
+  background-color: #c8c5bd;
+  margin: 30px 0;
+  align-self: flex-start;
 }
 
 .footer {
   width: 100%;
   padding: 10px 20px;
-  background-color: #f5f5f5;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .footer__language {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 18px;
 }
 .footer__language-icon {
   margin-right: 5px;
 }
 .footer__language-chevron {
-  margin-left: 5px;
+  margin-left: 15px;
+  font-size: 30px;
 }
-/*!**************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/login/index.scss ***!
-  \**************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/login/index.scss (1) ***!
+  \******************************************************************************************************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -2705,33 +2724,44 @@
   border: 1px solid #ccc;
 }
 .main__privacy {
-  margin-top: 20px;
-  text-align: center;
+  margin-top: 200px;
+  display: flex;
+  align-items: left;
 }
 .main__privacy a {
-  color: #007ee5;
   text-decoration: none;
   margin: 0 5px;
+  color: #1e1919;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+}
+.main__privacy a:hover {
+  text-decoration: underline;
+}
+.main__privacy__separator {
+  width: 15%;
+  height: 1px;
+  background-color: #c8c5bd;
+  margin: 30px 0;
+  align-self: flex-start;
 }
 
 .footer {
   width: 100%;
   padding: 10px 20px;
-  background-color: #f5f5f5;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .footer__language {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 18px;
 }
 .footer__language-icon {
   margin-right: 5px;
 }
 .footer__language-chevron {
-  margin-left: 5px;
+  margin-left: 15px;
+  font-size: 30px;
 }
 /*!******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/dashboard/index.scss ***!
