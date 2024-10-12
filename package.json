@@ -33,7 +33,10 @@
   },
   "type": "module",
   "dependencies": {
+    "browserify-fs": "^1.0.0",
+    "dotenv-webpack": "^8.1.0",
     "font-awesome": "^4.7.0",
-    "glob": "^11.0.0"
+    "glob": "^11.0.0",
+    "path-browserify": "^1.0.1"
   }
 }

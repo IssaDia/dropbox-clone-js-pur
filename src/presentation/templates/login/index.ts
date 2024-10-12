@@ -1,3 +1,4 @@
+import GoogleAuth from "../../../providers/auth/google/GoogleAuth";
 import "./index.scss";
 import Handlebars from "handlebars";
 
@@ -21,7 +22,18 @@ const login = () => {
 
 const handleRegister = (event: Event): void => {
   const mouseEvent = event as MouseEvent;
-  console.log(mouseEvent.target);
+  const target = mouseEvent.target as HTMLButtonElement;
+  switch (target.id) {
+    case "google-button-id":
+      const googleAuth = new GoogleAuth();
+      googleAuth.register();
+      break;
+    case "apple-button-id":
+      console.log("apple");
+      break;
+    default:
+      break;
+  }
 };
 
 function initializeEvents(): void {
