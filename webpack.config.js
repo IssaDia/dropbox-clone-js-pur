@@ -78,5 +78,6 @@ export default {
     hot: true, // Active le Hot Module Replacement
     watchFiles: ["src/**/*", "public/**/*"],
     historyApiFallback: true,
+    allowedHosts: "all", // Autoriser tous les hôtes, y compris ngrok
   },
 };
