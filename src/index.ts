@@ -1,23 +1,8 @@
-import Handlebars from "handlebars";
-import loginTemplate from "./presentation/templates/login/index.hbs";
 import "./styles/main.scss";
+import { router } from "./router";
 
-interface Routes {
-  [key: string]: Handlebars.TemplateDelegate;
-}
-
-const routes: Routes = {
-  "/": loginTemplate as unknown as Handlebars.TemplateDelegate,
+const startApp = () => {
+  router();
 };
 
-export const router = async () => {
-  const path = window.location.pathname;
-
-  const template = routes[path] || loginTemplate;
-
-  const html = template({});
-
-  document.body.innerHTML = html;
-};
-
-router();
+startApp();

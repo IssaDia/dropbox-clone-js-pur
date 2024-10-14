@@ -1,3 +1,11 @@
+/*!***************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss ***!
+  \***************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap);
+/*!**************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/login/index.scss ***!
+  \**************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap);
 /*!**************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/font-awesome/css/font-awesome.css ***!
   \**************************************************************************************************/
@@ -2339,9 +2347,15 @@
   clip: auto;
 }
 
-/*!***************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss ***!
-  \***************************************************************************************************************/
+/*!*******************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.scss (1) ***!
+  \*******************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
   width: 100%;
   height: 100%;
@@ -2353,13 +2367,13 @@
 
 .header {
   width: 100%;
-  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 60px;
   background-color: #ffffff;
   border-bottom: 1px solid #ccc;
+  padding: 10px;
 }
 .header__logo-link {
   display: flex;
@@ -2372,14 +2386,15 @@
   height: 100%;
 }
 .header__logo-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .header__logo-text {
   font-size: 20px;
   margin-left: 10px;
   color: #333;
   font-weight: bold;
+  font-family: "Montserrat", sans-serif;
 }
 .header__language {
   display: flex;
@@ -2397,51 +2412,67 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-grow: 1;
   padding: 20px;
+  margin-top: 50px;
 }
 .main__title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 20px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
 }
 .main__buttons {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
+  max-width: 360px;
 }
 .main__button {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  border: 1px solid #eeeeee;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
-.main__button--google {
-  background-color: #4285f4;
-  color: white;
+.main__button:hover {
+  background-color: #f3f7fd;
 }
-.main__button--apple {
-  background-color: #000;
-  color: white;
+.main__button__icon {
+  position: absolute;
+  left: 10px;
+}
+.main__button--apple, .main__button--google {
+  background-color: #fff;
+  color: #333;
+  justify-content: center;
+  padding-left: 40px;
 }
 .main__button--submit {
   background-color: #007ee5;
   color: white;
+  border-color: #ccc;
 }
 .main__separator {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 40%;
   margin: 20px 0;
 }
 .main__line {
   flex: 1;
   height: 1px;
-  background-color: #ccc;
+  background-color: #eee;
 }
 .main__text {
   padding: 0 10px;
@@ -2450,40 +2481,289 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
+}
+.main__form__label {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+.main__form__button {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  margin-top: 10px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #eee;
+  color: #ffffff;
+  background-color: #0057e5;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__form__button:hover {
+  background-color: #0044cc;
 }
 .main__input {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
 }
 .main__privacy {
-  margin-top: 20px;
-  text-align: center;
+  margin-top: 200px;
+  display: flex;
+  align-items: left;
 }
 .main__privacy a {
-  color: #007ee5;
   text-decoration: none;
   margin: 0 5px;
+  color: #1e1919;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+}
+.main__privacy a:hover {
+  text-decoration: underline;
+}
+.main__privacy__separator {
+  width: 15%;
+  height: 1px;
+  background-color: #c8c5bd;
+  margin: 30px 0;
+  align-self: flex-start;
 }
 
 .footer {
   width: 100%;
   padding: 10px 20px;
-  background-color: #f5f5f5;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .footer__language {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 18px;
 }
 .footer__language-icon {
   margin-right: 5px;
 }
 .footer__language-chevron {
+  margin-left: 15px;
+  font-size: 30px;
+}
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/login/index.scss (1) ***!
+  \******************************************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.header__logo-icon {
+  width: 40px;
+  height: 40px;
+}
+.header__logo-text {
+  font-size: 20px;
+  margin-left: 10px;
+  color: #333;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+.header__language {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.header__language-icon {
+  margin-right: 5px;
+}
+.header__language-chevron {
   margin-left: 5px;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 50px;
+}
+.main__title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+.main__buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+}
+.main__button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #eeeeee;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.main__button:hover {
+  background-color: #f3f7fd;
+}
+.main__button__icon {
+  position: absolute;
+  left: 10px;
+}
+.main__button--apple, .main__button--google {
+  background-color: #fff;
+  color: #333;
+  justify-content: center;
+  padding-left: 40px;
+}
+.main__button--submit {
+  background-color: #007ee5;
+  color: white;
+  border-color: #ccc;
+}
+.main__separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin: 20px 0;
+}
+.main__line {
+  flex: 1;
+  height: 1px;
+  background-color: #eee;
+}
+.main__text {
+  padding: 0 10px;
+}
+.main__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+}
+.main__form__label {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+.main__form__button {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  margin-top: 10px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #eee;
+  color: #ffffff;
+  background-color: #0057e5;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__form__button:hover {
+  background-color: #0044cc;
+}
+.main__input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+.main__privacy {
+  margin-top: 200px;
+  display: flex;
+  align-items: left;
+}
+.main__privacy a {
+  text-decoration: none;
+  margin: 0 5px;
+  color: #1e1919;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+}
+.main__privacy a:hover {
+  text-decoration: underline;
+}
+.main__privacy__separator {
+  width: 15%;
+  height: 1px;
+  background-color: #c8c5bd;
+  margin: 30px 0;
+  align-self: flex-start;
+}
+
+.footer {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+}
+.footer__language {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+.footer__language-icon {
+  margin-right: 5px;
+}
+.footer__language-chevron {
+  margin-left: 15px;
+  font-size: 30px;
+}
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/presentation/templates/dashboard/index.scss ***!
+  \******************************************************************************************************************************************/
+
