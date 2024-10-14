@@ -15,7 +15,7 @@
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var Handlebars = __webpack_require__(/*! ../../../../node_modules/handlebars/runtime.js */ \"./node_modules/handlebars/runtime.js\");\nfunction __default(obj) { return obj && (obj.__esModule ? obj[\"default\"] : obj); }\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[8,\">= 4.3.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    return \"<main>\\n  <h2>Welcome to the Home Page</h2>\\n  <p>This is the content of the home page.</p>\\n</main>\\n/* faire un layout */\";\n},\"useData\":true});\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/dashboard/index.hbs?");
+eval("var Handlebars = __webpack_require__(/*! ../../../../node_modules/handlebars/runtime.js */ \"./node_modules/handlebars/runtime.js\");\nfunction __default(obj) { return obj && (obj.__esModule ? obj[\"default\"] : obj); }\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[8,\">= 4.3.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    return \"<main>\\n  <p>Dashboard</p>\\n</main>\\n/* faire un layout */\";\n},\"useData\":true});\n\n//# sourceURL=webpack://dropbox/./src/presentation/templates/dashboard/index.hbs?");
 
 /***/ }),
 
