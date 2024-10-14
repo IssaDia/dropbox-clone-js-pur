@@ -1,3 +1,4 @@
+import AppleAuth from "../../../providers/auth/apple/AppleAuth";
 import GoogleAuth from "../../../providers/auth/google/GoogleAuth";
 import "./index.scss";
 import Handlebars from "handlebars";
@@ -29,7 +30,8 @@ const handleRegister = (event: Event): void => {
       googleAuth.register();
       break;
     case "apple-button-id":
-      console.log("apple");
+      const appleAuth = new AppleAuth();
+      appleAuth.register();
       break;
     default:
       break;
