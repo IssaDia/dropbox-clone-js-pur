@@ -3,3 +3,5 @@ dist
 public/.DS_Store
 .DS_Store
 .env
+client/.env
+server/.env
