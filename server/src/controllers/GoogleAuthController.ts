@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 // import passport from "passport";
 import { OAuth2Client } from "google-auth-library";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const oauth2Client = new OAuth2Client(
   process.env.GOOGLECLIENTID,
@@ -9,14 +12,15 @@ const oauth2Client = new OAuth2Client(
 );
 
 export const googleAuth = (req: Request, res: Response) => {
-  console.log("authentification");
-
   const authUrl = oauth2Client.generateAuthUrl({
     access_type: "offline",
     scope: ["profile", "email"],
     prompt: "consent",
+    include_granted_scopes: true,
   });
-  res.redirect(authUrl);
+
+  // Instead of redirecting, send the URL to the client
+  res.json({ url: authUrl });
 };
 
 export const googleAuthCallback = async (req: Request, res: Response) => {

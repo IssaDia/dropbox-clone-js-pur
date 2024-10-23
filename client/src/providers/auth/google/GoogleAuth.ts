@@ -4,13 +4,13 @@ class GoogleAuth implements RegisterInterface {
   public static async register() {
     try {
       const response = await fetch("http://localhost:5001/api/google_auth", {
-        method: "GET",
-        credentials: "include", // si vous avez besoin d'envoyer des cookies
+        credentials: "include",
       });
-      if (!response.ok) throw new Error("Failed to authenticate with Google");
-      // Gestion de la réponse ici
+      const data = await response.json();
+      // Redirect in the frontend
+      window.location.href = data.url;
     } catch (error) {
-      console.error(error);
+      console.error("Failed to initiate auth:", error);
     }
   }
 

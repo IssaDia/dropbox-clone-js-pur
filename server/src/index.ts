@@ -12,8 +12,10 @@ const port = process.env.PORT || 3000;
 console.log(process.env.CLIENT_URL);
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: process.env.CLIENT_URL || "http://localhost:8080",
   credentials: true,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(
