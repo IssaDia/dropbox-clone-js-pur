@@ -25,8 +25,9 @@ const handleRegister = (event: Event): void => {
   const target = mouseEvent.target as HTMLButtonElement;
   switch (target.id) {
     case "google-button-id":
-      const googleAuth = new GoogleAuth();
-      googleAuth.register();
+      GoogleAuth.register();
+      console.log("google");
+
       break;
     case "apple-button-id":
       console.log("apple");
