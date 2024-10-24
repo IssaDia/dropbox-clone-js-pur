@@ -7,6 +7,8 @@ class GoogleAuth implements RegisterInterface {
         credentials: "include",
       });
       const data = await response.json();
+      console.log(data);
+
       // Redirect in the frontend
       window.location.href = data.url;
     } catch (error) {
