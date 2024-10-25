@@ -27,7 +27,6 @@ export const googleAuth = (req: Request, res: Response) => {
     include_granted_scopes: true,
   });
 
-  // Instead of redirecting, send the URL to the client
   res.json({ url: authUrl });
 };
 
@@ -62,7 +61,15 @@ export const googleAuthCallback = async (req: Request, res: Response) => {
       { expiresIn: "7d" }
     );
 
-    res.redirect(`${process.env.CLIENT_URL}/auth-success?token=${customToken}`);
+    res.json({ token: customToken });
+
+    res.redirect(
+      `${
+        process.env.CLIENT_URL
+      }/auth/callback?token=${customToken}&user=${encodeURIComponent(
+        JSON.stringify(tokenPayload)
+      )}`
+    );
   } catch (error) {
     console.error("OAuth callback error:", error);
     res.redirect(`${process.env.CLIENT_URL}/auth-error`);
