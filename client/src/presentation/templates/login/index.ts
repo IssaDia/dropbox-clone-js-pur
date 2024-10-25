@@ -26,11 +26,9 @@ const handleRegister = (event: Event): void => {
   switch (target.id) {
     case "google-button-id":
       GoogleAuth.register();
-      console.log("google");
 
       break;
     case "apple-button-id":
-      console.log("apple");
       break;
     default:
       break;
@@ -42,6 +40,7 @@ function initializeEvents(): void {
     const buttons = document.querySelectorAll(".register-button");
     buttons.forEach((button) => {
       button.addEventListener("click", handleRegister);
+      GoogleAuth.handleAuthCallback();
     });
   });
 }
