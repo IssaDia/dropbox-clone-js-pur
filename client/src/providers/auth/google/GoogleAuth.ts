@@ -1,49 +1,51 @@
 import { RegisterInterface } from "../RegisterInterface";
 
 class GoogleAuth implements RegisterInterface {
-  public static async register() {
+  static async register() {
     try {
-      const response = await fetch("http://localhost:5001/api/google_auth", {
+      const response = await fetch("http://localhost:5001/api/auth/google", {
         credentials: "include",
       });
       const data = await response.json();
-      localStorage.setItem("auth_state", "pending");
 
       window.location.href = data.url;
     } catch (error) {
       console.error("Failed to initiate auth:", error);
+      window.location.href = "/";
     }
   }
 
-  static handleAuthCallback() {
-    // Get URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
-    const userDataStr = urlParams.get("user");
+  static async handleAuthCallback() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
 
-    if (token) {
-      localStorage.setItem("auth_token", token);
-      if (userDataStr) {
-        try {
-          const userData = JSON.parse(decodeURIComponent(userDataStr));
-          localStorage.setItem("user_data", JSON.stringify(userData));
-        } catch (error) {
-          console.error("Failed to parse user data:", error);
+      const code = urlParams.get("code");
+      if (!code) return;
+      const response = await fetch(`/api/auth/google/callback?code=${code}`, {
+        credentials: "include",
+      });
+
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem("auth_token", data.token);
+        if (data.user) {
+          localStorage.setItem("user_data", JSON.stringify(data.user));
         }
       }
-      // Redirect to dashboard or home page
       window.location.href = "/dashboard";
-    } else {
-      // Handle error case
-      window.location.href = "/login";
+    } catch (error) {
+      console.error("Authentication failed:", error);
+    } finally {
+      window.history.replaceState({}, document.title, "/");
+      window.location.reload();
     }
   }
 
   static logout() {
     localStorage.removeItem("auth_token");
     localStorage.removeItem("user_data");
-    localStorage.removeItem("auth_state");
-    window.location.href = "/login";
+    window.location.reload();
   }
   static isAuthenticated() {
     return localStorage.getItem("auth_token") !== null;
