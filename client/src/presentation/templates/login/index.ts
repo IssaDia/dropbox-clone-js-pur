@@ -37,10 +37,14 @@ const handleRegister = (event: Event): void => {
 
 function initializeEvents(): void {
   document.addEventListener("DOMContentLoaded", () => {
+    const code = new URLSearchParams(window.location.search).get("code");
+    if (code) {
+      GoogleAuth.handleAuthCallback();
+    }
+
     const buttons = document.querySelectorAll(".register-button");
     buttons.forEach((button) => {
       button.addEventListener("click", handleRegister);
-      GoogleAuth.handleAuthCallback();
     });
   });
 }

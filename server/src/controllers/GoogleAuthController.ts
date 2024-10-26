@@ -61,8 +61,6 @@ export const googleAuthCallback = async (req: Request, res: Response) => {
       { expiresIn: "7d" }
     );
 
-    res.json({ token: customToken });
-
     res.redirect(
       `${
         process.env.CLIENT_URL
