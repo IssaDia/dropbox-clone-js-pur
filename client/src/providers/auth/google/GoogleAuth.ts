@@ -19,26 +19,33 @@ class GoogleAuth implements RegisterInterface {
     try {
       const urlParams = new URLSearchParams(window.location.search);
 
-      const code = urlParams.get("code");
-      if (!code) return;
-      const response = await fetch(`/api/auth/google/callback?code=${code}`, {
-        credentials: "include",
-      });
+      const token = urlParams.get("token");
+      const userStr = urlParams.get("user");
 
-      const data = await response.json();
-
-      if (data.token) {
-        localStorage.setItem("auth_token", data.token);
-        if (data.user) {
-          localStorage.setItem("user_data", JSON.stringify(data.user));
-        }
+      if (!token || !userStr) {
+        console.error("Missing token or user data");
+        window.location.href = "/";
+        return;
       }
-      window.location.href = "/dashboard";
+
+      try {
+        // Parse the user data from the URL
+        const user = JSON.parse(decodeURIComponent(userStr));
+
+        // Store the authentication data
+        localStorage.setItem("auth_token", token);
+        localStorage.setItem("user_data", JSON.stringify(user));
+
+        // Clean up URL and redirect
+        window.history.replaceState({}, document.title, "/dashboard");
+        window.location.href = "/dashboard";
+      } catch (parseError) {
+        console.error("Error parsing user data:", parseError);
+        window.location.href = "/";
+      }
     } catch (error) {
-      console.error("Authentication failed:", error);
-    } finally {
-      window.history.replaceState({}, document.title, "/");
-      window.location.reload();
+      console.error("Authentication callback failed:", error);
+      window.location.href = "/";
     }
   }
 
@@ -51,8 +58,13 @@ class GoogleAuth implements RegisterInterface {
     return localStorage.getItem("auth_token") !== null;
   }
   static getUserData() {
-    const userData = localStorage.getItem("user_data");
-    return userData ? JSON.parse(userData) : null;
+    try {
+      const userData = localStorage.getItem("user_data");
+      return userData ? JSON.parse(userData) : null;
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      return null;
+    }
   }
 }
 
