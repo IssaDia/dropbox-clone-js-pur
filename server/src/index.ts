@@ -9,7 +9,18 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-console.log(process.env.CLIENT_URL);
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 1000 * 60 * 5,
+    },
+  })
+);
 
 const corsOptions = {
   origin: process.env.CLIENT_URL || "http://localhost:8080",
