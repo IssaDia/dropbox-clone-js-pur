@@ -7,6 +7,7 @@ import {
   GoogleUserInfo,
   JWTPayload,
 } from "../interfaces/GoogleAuthInterface";
+import { Session } from "express-session";
 
 dotenv.config();
 
@@ -15,6 +16,14 @@ const oauth2Client = new OAuth2Client(
   process.env.GOOGLESECRET,
   process.env.REDIRECTURI
 );
+
+interface CustomSessionData extends Session {
+  tempToken?: any;
+}
+
+declare module "express-session" {
+  interface SessionData extends CustomSessionData {}
+}
 
 export const googleAuth = (req: Request, res: Response) => {
   const authUrl = oauth2Client.generateAuthUrl({
@@ -28,6 +37,7 @@ export const googleAuth = (req: Request, res: Response) => {
   });
 
   res.json({ url: authUrl });
+  console.log(authUrl);
 };
 
 export const googleAuthCallback = async (req: Request, res: Response) => {
@@ -61,13 +71,9 @@ export const googleAuthCallback = async (req: Request, res: Response) => {
       { expiresIn: "7d" }
     );
 
-    res.redirect(
-      `${
-        process.env.CLIENT_URL
-      }/auth/callback?token=${customToken}&user=${encodeURIComponent(
-        JSON.stringify(tokenPayload)
-      )}`
-    );
+    req.session.tempToken = customToken;
+
+    res.redirect(`${process.env.CLIENT_URL}/auth-success`);
   } catch (error) {
     console.error("OAuth callback error:", error);
     res.redirect(`${process.env.CLIENT_URL}/auth-error`);
