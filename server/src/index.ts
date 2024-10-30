@@ -13,9 +13,9 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET || "",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
+      secure: false,
       httpOnly: true,
       maxAge: 1000 * 60 * 5,
     },
@@ -29,13 +29,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-app.use(
-  session({
-    secret: process.env.SESSIONSECRET || "",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+
 app.use(cors(corsOptions));
 
 // app.use(passport.initialize());

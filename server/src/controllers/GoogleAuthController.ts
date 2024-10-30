@@ -25,7 +25,10 @@ declare module "express-session" {
   interface SessionData extends CustomSessionData {}
 }
 
-export const googleAuth = (req: Request, res: Response) => {
+type RequestHandler = (req: Request, res: Response) => void | Promise<void>;
+
+
+export const googleAuth:RequestHandler = (req: Request, res: Response) => {
   const authUrl = oauth2Client.generateAuthUrl({
     access_type: "offline",
     scope: [
@@ -40,7 +43,7 @@ export const googleAuth = (req: Request, res: Response) => {
   console.log(authUrl);
 };
 
-export const googleAuthCallback = async (req: Request, res: Response) => {
+export const googleAuthCallback:RequestHandler = async (req: Request, res: Response) => {
   try {
     const { code } = req.query;
 
@@ -73,9 +76,26 @@ export const googleAuthCallback = async (req: Request, res: Response) => {
 
     req.session.tempToken = customToken;
 
+
+
     res.redirect(`${process.env.CLIENT_URL}/auth-success`);
+   
+
   } catch (error) {
     console.error("OAuth callback error:", error);
     res.redirect(`${process.env.CLIENT_URL}/auth-error`);
+  }
+};
+
+export const getAuthToken:RequestHandler = (req: Request, res: Response): void => {
+  const token = req.session.tempToken;
+
+  console.log("Token before redirect:", req.session.tempToken);
+
+  
+  if (token) {
+    res.json({ token });
+  } else {
+    res.status(401).json({ error: 'Token not found' });
   }
 };
