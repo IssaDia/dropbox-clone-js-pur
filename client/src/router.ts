@@ -9,7 +9,7 @@ interface Routes {
 const routes: Routes = {
   "/": login,
   "/dashboard": dashboard,
-  "/auth-success": authSuccess,
+  "/authsuccess": authSuccess,
 };
 
 export const router = async () => {

@@ -76,7 +76,11 @@ export const googleAuthCallback:RequestHandler = async (req: Request, res: Respo
 
     req.session.tempToken = customToken;
 
-    // res.redirect(`${process.env.CLIENT_URL}/auth-success`);
+
+
+    res.redirect(`${process.env.CLIENT_URL}/auth-success`);
+   
+
   } catch (error) {
     console.error("OAuth callback error:", error);
     res.redirect(`${process.env.CLIENT_URL}/auth-error`);
@@ -85,15 +89,13 @@ export const googleAuthCallback:RequestHandler = async (req: Request, res: Respo
 
 export const getAuthToken:RequestHandler = (req: Request, res: Response): void => {
   const token = req.session.tempToken;
-  
-  if (!token) {
-     res.status(401).json({ error: 'No token found' });
-     return;
-  }
 
-  // Supprimer le token de la session après l'avoir récupéré
-  delete req.session.tempToken;
+  console.log("Token before redirect:", req.session.tempToken);
+
   
-  // Renvoyer le token au client
-  res.json({ token });
+  if (token) {
+    res.json({ token });
+  } else {
+    res.status(401).json({ error: 'Token not found' });
+  }
 };
