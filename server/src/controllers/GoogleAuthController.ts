@@ -40,7 +40,7 @@ export const googleAuth:RequestHandler = (req: Request, res: Response) => {
   });
 
   res.json({ url: authUrl });
-  console.log(authUrl);
+ 
 };
 
 export const googleAuthCallback:RequestHandler = async (req: Request, res: Response) => {
