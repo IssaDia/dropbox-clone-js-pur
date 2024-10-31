@@ -23,7 +23,7 @@ app.use(
 );
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:8080",
+  origin: "*",
   credentials: true,
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],

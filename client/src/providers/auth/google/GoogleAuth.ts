@@ -69,9 +69,16 @@ class GoogleAuth implements RegisterInterface {
 
   static async getToken() {
     const tokenResponse = await fetch("http://localhost:5001/api/auth/token", {
+      method: "GET",
       credentials: "include",
+     
     });
+    if (!tokenResponse.ok) {
+      throw new Error("Erreur lors de la récupération du token");
+  }
     const { token } = await tokenResponse.json();
+    console.log(token);
+    
     localStorage.setItem("authToken", token);
   }
 }
