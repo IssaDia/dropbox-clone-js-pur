@@ -69,6 +69,7 @@ class GoogleAuth implements RegisterInterface {
 
   static async getToken() {
     const tokenResponse = await fetch("http://localhost:5001/api/auth/token", {
+      mode: 'no-cors',
       method: "GET",
       credentials: "include",
      
@@ -77,7 +78,7 @@ class GoogleAuth implements RegisterInterface {
       throw new Error("Erreur lors de la récupération du token");
   }
     const { token } = await tokenResponse.json();
-    console.log(token);
+   
     
     localStorage.setItem("authToken", token);
   }
