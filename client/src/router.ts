@@ -3,7 +3,7 @@ import dashboard from "./presentation/templates/dashboard/index";
 import authSuccess from "./presentation/templates/authSuccess/index";
 
 interface Routes {
-  [key: string]: () => string;
+  [key: string]: () => string ;
 }
 
 const routes: Routes = {
