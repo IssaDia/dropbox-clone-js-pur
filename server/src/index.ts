@@ -14,7 +14,7 @@ const allowedOrigins = [
   'http://localhost:8080',  // Your frontend
   'http://localhost:5001',  // Your API
   'https://fonts.gstatic.com',
-  'http://localhost:5001/api/auth/token '
+  
 ];
 
 
