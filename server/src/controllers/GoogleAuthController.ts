@@ -39,9 +39,6 @@ export const googleAuth:RequestHandler = (req: Request, res: Response) => {
     include_granted_scopes: true,
   });
 
- 
-  
-
   res.json({ url: authUrl });
  
 };
@@ -77,7 +74,8 @@ export const googleAuthCallback:RequestHandler = async (req: Request, res: Respo
       { expiresIn: "7d" }
     );
 
-    req.session.tempToken = customToken;
+    req.session.tempToken = customToken; 
+
 
     res.redirect(`${process.env.CLIENT_URL}/auth-success`);
    
@@ -90,14 +88,9 @@ export const googleAuthCallback:RequestHandler = async (req: Request, res: Respo
 
 export const getAuthToken:RequestHandler = (req: Request, res: Response): void => {
   const token = req.session.tempToken;
-
-  console.log("google get token");
-
+  
   if (token) {
     res.json({ token });
-
-  
-    
   } else {
     res.status(401).json({ error: 'Token not found' });
   }

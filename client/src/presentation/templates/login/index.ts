@@ -5,28 +5,6 @@ import Handlebars from "handlebars";
 const loginTemplate: Handlebars.TemplateDelegate = require("./index.hbs");
 
 const login = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get("token");
-  const userStr = urlParams.get("user");
-
-  if (token && userStr) {
-    try {
-      const user = JSON.parse(decodeURIComponent(userStr));
-      localStorage.setItem("auth_token", token);
-      localStorage.setItem("user_data", JSON.stringify(user));
-      window.location.href = "/dashboard";
-      return ""; // Return empty string while redirecting
-    } catch (error) {
-      console.error("Error handling auth callback:", error);
-      window.location.href = "/";
-      return ""; // Return empty string while redirecting
-    }
-  }
-
-  if (GoogleAuth.isAuthenticated()) {
-    window.location.href = "/dashboard";
-    return "";
-  }
 
   const data = {
     title: "Se connecter",

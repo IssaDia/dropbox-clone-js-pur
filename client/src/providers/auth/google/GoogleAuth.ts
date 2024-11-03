@@ -32,9 +32,9 @@ class GoogleAuth implements RegisterInterface {
         // Parse the user data from the URL
         const user = JSON.parse(decodeURIComponent(userStr));
 
-      
+        // Store the authentication data
         localStorage.setItem("auth_token", token);
-     
+        localStorage.setItem("user_data", JSON.stringify(user));
 
         // Clean up URL and redirect
         window.history.replaceState({}, document.title, "/dashboard");
@@ -68,19 +68,20 @@ class GoogleAuth implements RegisterInterface {
   }
 
   static async getToken() {
-    const tokenResponse = await fetch("http://localhost:5001/api/auth/token", {
-      mode: 'no-cors',
-      method: "GET",
-      credentials: "include",
+    try {
+      const response = await fetch("http://localhost:5001/api/auth/token", {
+        credentials: "include",
+      });
+      const token = await response.json();
+
+      localStorage.setItem("auth-token", token)
      
-    });
-    if (!tokenResponse.ok) {
-      throw new Error("Erreur lors de la récupération du token");
-  }
-    const { token } = await tokenResponse.json();
-   
+      return token
     
-    localStorage.setItem("authToken", token);
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      return null;
+    }
   }
 }
 
