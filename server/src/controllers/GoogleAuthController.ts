@@ -77,7 +77,8 @@ export const googleAuthCallback:RequestHandler = async (req: Request, res: Respo
     req.session.tempToken = customToken; 
 
 
-    res.redirect(`${process.env.CLIENT_URL}/auth-success`);
+    res.redirect(`${process.env.CLIENT_URL}/auth-success?token=${customToken}`);
+
    
 
   } catch (error) {
