@@ -1,14 +1,15 @@
 import login from "./presentation/templates/login/index";
 import dashboard from "./presentation/templates/dashboard/index";
 import authSuccess from "./presentation/templates/authSuccess/index";
+import withAuth from "./component/withAuth";
 
 interface Routes {
   [key: string]: () => string ;
 }
 
-const routes: Routes = {
+const routes: any = {
   "/": login,
-  "/dashboard": dashboard,
+  "/dashboard": withAuth(dashboard),
   "/auth-success": authSuccess,
 };
 
