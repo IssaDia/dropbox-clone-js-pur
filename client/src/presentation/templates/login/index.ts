@@ -1,4 +1,5 @@
 import GoogleAuth from "../../../providers/auth/google/GoogleAuth";
+import MailAuth from "../../../providers/auth/mail/MailAuth";
 import "./index.scss";
 import Handlebars from "handlebars";
 
@@ -11,6 +12,7 @@ const login = () => {
 
     googleButtonId: "google-button-id",
     appleButtonId: "apple-button-id",
+    mailButtonId: "mail-button-id",
     handleRegister: handleRegister,
   };
   document.title = data.title;
@@ -32,6 +34,9 @@ const handleRegister = (event: Event): void => {
       break;
     case "apple-button-id":
       // Handle Apple login
+      break;
+    case "mail-button-id":
+      MailAuth.register();
       break;
     default:
       break;
