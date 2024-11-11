@@ -1,6 +1,6 @@
-import login from "./presentation/templates/login/index";
-import dashboard from "./presentation/templates/dashboard/index";
-import authSuccess from "./presentation/templates/authSuccess/index";
+import login from "./templates/login/index";
+import dashboard from "./templates/dashboard/index";
+import authSuccess from "./templates/authSuccess/index";
 import withAuth from "./component/withAuth";
 
 interface Routes {
