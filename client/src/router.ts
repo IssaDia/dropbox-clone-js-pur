@@ -71,6 +71,8 @@ const routes: { [key: string]: RouteHandler }  = {
 
 export const router = async () => {
     const path = window.location.pathname;
+    console.log(path);
+    
     const render = routes[path] || routes["/"];
     document.body.innerHTML = render();
 };
