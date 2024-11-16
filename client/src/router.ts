@@ -1,23 +1,23 @@
-// import login from "./templates/login/index";
-// import dashboard from "./templates/dashboard/index";
-// import authSuccess from "./templates/authSuccess/index";
-// import withAuth from "./component/withAuth";
+import login from "./templates/login/index";
+import dashboard from "./templates/dashboard/index";
+import authSuccess from "./templates/authSuccess/index";
+import withAuth from "./component/withAuth";
 
-// interface Routes {
-//   [key: string]: () => string ;
-// }
+interface Routes {
+  [key: string]: () => string ;
+}
 
-// const routes: any = {
-//   "/": login,
-//   "/dashboard": withAuth(dashboard),
-//   "/auth-success": authSuccess,
-// };
+const routes: any = {
+  "/": login,
+  "/dashboard": withAuth(dashboard),
+  "/auth-success": authSuccess,
+};
 
-// export const router = async () => {
-//   const path = window.location.pathname;
-//   const render = routes[path] || routes["/"];
-//   document.body.innerHTML = render();
-// };
+export const router = async () => {
+  const path = window.location.pathname;
+  const render = routes[path] || routes["/"];
+  document.body.innerHTML = render();
+};
 
 // import Handlebars from 'handlebars';
 // import mainLayout from './layouts/main.hbs';
@@ -51,28 +51,28 @@
 //     return template(data);
 // };
 
-import { renderTemplate } from './handlebars-renderer';
-import withAuth from './component/withAuth';
+// import { renderTemplate } from './handlebars-renderer';
+// import withAuth from './component/withAuth';
 
-type RouteHandler = () => string;
+// type RouteHandler = () => string;
 
 
-// Configuration of routes
-const routes: { [key: string]: RouteHandler }  = {
-    "/": () => renderTemplate('login', {
-        title: "Log in or sign up",
-        googleIcon:"",
-        appleIcon: "",
-        language: "Français (France)"
-    }),
-    "/dashboard": withAuth(() => renderTemplate('dashboard', {})),
-    "/auth-success": () => renderTemplate('authSuccess', {}),
-};
+// // Configuration of routes
+// const routes: { [key: string]: RouteHandler }  = {
+//     "/": () => renderTemplate('login', {
+//         title: "Log in or sign up",
+//         googleIcon:"",
+//         appleIcon: "",
+//         language: "Français (France)"
+//     }),
+//     "/dashboard": withAuth(() => renderTemplate('dashboard', {})),
+//     "/auth-success": () => renderTemplate('authSuccess', {}),
+// };
 
-export const router = async () => {
-    const path = window.location.pathname;
-    console.log(path);
+// export const router = async () => {
+//     const path = window.location.pathname;
+//     console.log(path);
     
-    const render = routes[path] || routes["/"];
-    document.body.innerHTML = render();
-};
+//     const render = routes[path] || routes["/"];
+//     document.body.innerHTML = render();
+// };
