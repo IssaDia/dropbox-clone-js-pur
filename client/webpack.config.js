@@ -18,6 +18,9 @@ export default {
   },
   resolve: {
     extensions: [".ts", ".js", ".hbs", ".scss"],
+    alias: {
+      '@partials': path.resolve(__dirname, 'src/templates/partials')
+    },
     fallback: {
       fs: false,
       path: "path-browserify",
@@ -32,7 +35,15 @@ export default {
       },
       {
         test: /\.hbs$/,
-        use: "handlebars-loader",
+        loader: "handlebars-loader",
+        options: {
+          partialDirs: [
+            path.join(__dirname, 'src/templates/partials')
+          ],
+          helperDirs: [
+            path.join(__dirname, 'src/templates/helpers')
+          ]
+        }
       },
       {
         test: /\.scss$/, // Traiter les fichiers SCSS
@@ -46,7 +57,7 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/presentation/templates/login/index.hbs",
+      template: "./src/templates/login/index.hbs",
       filename: "index.html",
       inject: "body",
     }),

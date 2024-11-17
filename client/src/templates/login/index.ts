@@ -2,6 +2,12 @@ import GoogleAuth from "../../providers/auth/google/GoogleAuth";
 import MailAuth from "../../providers/auth/mail/MailAuth";
 import "./index.scss";
 import Handlebars from "handlebars";
+import headPartial from "../partials/head.hbs";
+import footerPartial from "../partials/footer.hbs"
+
+Handlebars.registerPartial('head', headPartial);
+Handlebars.registerPartial('footer', footerPartial);
+
 
 const loginTemplate: Handlebars.TemplateDelegate = require("./index.hbs");
 
@@ -9,7 +15,6 @@ const login = () => {
 
   const data = {
     title: "Se connecter",
-
     googleButtonId: "google-button-id",
     appleButtonId: "apple-button-id",
     mailButtonId: "mail-button-id",
