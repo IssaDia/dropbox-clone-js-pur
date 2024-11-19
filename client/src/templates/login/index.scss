@@ -86,6 +86,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 360px;
+    justify-content: space-around;
   }
 
   &__button {
@@ -100,7 +101,8 @@
     color: #333;
     font-family: "Montserrat", sans-serif;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     position: relative;
 
     &:hover {
@@ -109,15 +111,18 @@
 
     &__icon {
       position: absolute;
-      left: 10px;
+    
     }
 
     &--apple,
     &--google {
       background-color: #fff;
       color: #333;
-      justify-content: center;
-      padding-left: 40px;
+    
+    svg {
+      margin-right: 10px;
+    }
+    
     }
 
     &--submit {

@@ -6,11 +6,13 @@ import headPartial from "../partials/head.hbs";
 import footerPartial from "../partials/footer.hbs";
 import loginFormPartial from "../partials/loginForm.hbs";
 import headerPartial from "../partials/header.hbs";
+import socialButtonPartial from "../partials/socialButton.hbs";
 
 Handlebars.registerPartial('head', headPartial);
 Handlebars.registerPartial('footer', footerPartial);
 Handlebars.registerPartial('loginForm', loginFormPartial);
 Handlebars.registerPartial('header', headerPartial);
+Handlebars.registerPartial('socialButton', socialButtonPartial);
 
 
 const loginTemplate: Handlebars.TemplateDelegate = require("./index.hbs");
@@ -23,6 +25,11 @@ const login = () => {
     appleButtonId: "apple-button-id",
     mailButtonId: "mail-button-id",
     handleRegister: handleRegister,
+    googleButtonText: "Continue with Google", 
+    googleColor1: "#EA4335", 
+    googleColor2: "#4285F4", 
+    googleColor3: "#FBBC05",  
+    googleColor4: "#34A853"  
   };
   document.title = data.title;
 
