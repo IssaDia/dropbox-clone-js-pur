@@ -13,6 +13,8 @@ Handlebars.registerPartial('footer', footerPartial);
 Handlebars.registerPartial('loginForm', loginFormPartial);
 Handlebars.registerPartial('header', headerPartial);
 Handlebars.registerPartial('socialButton', socialButtonPartial);
+Handlebars.registerHelper('eq', (a, b) => a === b);
+
 
 
 const loginTemplate: Handlebars.TemplateDelegate = require("./index.hbs");
@@ -25,11 +27,21 @@ const login = () => {
     appleButtonId: "apple-button-id",
     mailButtonId: "mail-button-id",
     handleRegister: handleRegister,
-    googleButtonText: "Continue with Google", 
-    googleColor1: "#EA4335", 
-    googleColor2: "#4285F4", 
-    googleColor3: "#FBBC05",  
-    googleColor4: "#34A853"  
+    buttonsData: [
+      {
+        id: "google-button-id",
+        name: "google",
+        text: "Continue with Google",
+        colors: ["#EA4335", "#4285F4", "#FBBC05", "#34A853"], 
+      },
+      {
+        id: "apple-button-id",
+        name: "apple",
+        text: "Continue with Apple",
+        colors: ["#000000"], 
+      },
+    
+    ],
   };
   document.title = data.title;
 

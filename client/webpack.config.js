@@ -42,7 +42,9 @@ export default {
           ],
           helperDirs: [
             path.join(__dirname, 'src/templates/helpers')
-          ]
+          ],
+          knownHelpers: ["eq"],
+          knownHelpersOnly: false,
         }
       },
       {
