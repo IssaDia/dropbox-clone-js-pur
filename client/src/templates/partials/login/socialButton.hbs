@@ -1,6 +1,16 @@
-<button class="main__button main__button--{{name}}" id="{{id}}" onclick="handleButtonRegister('{{id}}')">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="16px" height="16px">
-    {{{icon}}}
-  </svg>
-  {{text}}
-</button>
+{{#each buttonsData}}
+  <button class="main__button main__button--{{name}}" id="{{id}}">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="16px" height="16px">
+      {{#if colors}}
+        <g>
+          {{#each colors}}
+            <path fill="{{this}}" d="..."></path>
+          {{/each}}
+        </g>
+      {{else}}
+        <path fill="#000000" d="..."></path>
+      {{/if}}
+    </svg>
+    {{text}}
+  </button>
+{{/each}}

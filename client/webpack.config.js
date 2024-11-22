@@ -82,6 +82,9 @@ export default {
   },
 
   mode: "development", // Mode de développement
+  cache: {
+    type: 'filesystem', // Utilisation du cache disque
+  },
   devServer: {
     static: path.resolve(__dirname, "dist"), // Où sont tes fichiers statiques
     compress: true, // Active la compression gzip
