@@ -54,23 +54,21 @@ const login = () => {
   return html;
 };
 
-const handleRegister = (event: Event): void => {
-  console.log(event);
-  
+const handleRegister =  (event: Event) => {
   event.preventDefault();
   const target = event.target as HTMLElement;
   const buttonId = target.id || target.closest("button")?.id || "";
 
   switch (buttonId) {
     case "google-button-id":
-      GoogleAuth.register();
+       GoogleAuth.register();
       break;
-    case "apple-button-id":
-      // Handle Apple login
-      break;
-    case "mail-button-id":
-      MailAuth.register();
-      break;
+    // case "apple-button-id":
+    //   // Handle Apple login
+    //   break;
+    // case "mail-button-id":
+    //   MailAuth.register();
+    //   break;
     default:
       break;
   }
