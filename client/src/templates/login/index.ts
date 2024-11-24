@@ -7,12 +7,14 @@ import footerPartial from "../partials/login/footer.hbs";
 import loginFormPartial from "../partials/login/loginForm.hbs";
 import headerPartial from "../partials/login/header.hbs";
 import socialButtonPartial from "../partials/login/socialButton.hbs";
+import secondLoginFormPartial from "../partials/login/secondLoginForm.hbs";
 
 Handlebars.registerPartial('head', headPartial);
 Handlebars.registerPartial('footer', footerPartial);
 Handlebars.registerPartial('loginForm', loginFormPartial);
 Handlebars.registerPartial('header', headerPartial);
 Handlebars.registerPartial('socialButton', socialButtonPartial);
+Handlebars.registerPartial('secondLoginForm', secondLoginFormPartial);
 Handlebars.registerHelper('eq', (a, b) => a === b);
 
 
@@ -81,6 +83,28 @@ function initializeEvents(): void {
   buttons.forEach((button) => {
     button.addEventListener("click", (event) => handleRegister(event));
   });
+
+  const form = document.getElementById("emailForm");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    
+    
+    const dynamicContent = document.getElementById("dynamicContent");
+    if (dynamicContent) {
+      const nextStepTemplate = Handlebars.partials.secondLoginFormPartial as Handlebars.TemplateDelegate;
+      dynamicContent.innerHTML = nextStepTemplate({});
+    }
+    document.getElementById("backButton")?.addEventListener("click", () => {
+      if (dynamicContent) {
+        const loginFormTemplate = Handlebars.partials.loginForm as Handlebars.TemplateDelegate;
+        dynamicContent.innerHTML = loginFormTemplate({});
+        initializeEvents(); 
+      }
+    });
+  
+  })
 }
 
 export default login;

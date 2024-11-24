@@ -15,6 +15,15 @@
   justify-content: space-between;
 }
 
+
+#dynamicContent {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#dynamicContent.hidden {
+  opacity: 0;
+}
+
 .header {
   width: 100%;
   display: flex;
