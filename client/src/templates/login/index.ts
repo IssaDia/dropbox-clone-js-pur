@@ -4,19 +4,24 @@ import "./index.scss";
 import Handlebars from "handlebars";
 import headPartial from "../partials/login/head.hbs";
 import footerPartial from "../partials/login/footer.hbs";
-import loginFormPartial from "../partials/login/loginForm.hbs";
+import mainFormPartial from "../partials/login/mainForm.hbs";
 import headerPartial from "../partials/login/header.hbs";
 import socialButtonPartial from "../partials/login/socialButton.hbs";
-import secondLoginFormPartial from "../partials/login/secondLoginForm.hbs";
+import secondMainFormPartial from "../partials/login/secondMainForm.hbs";
+import layoutTemplate from "../partials/login/layout.hbs";
+
 
 Handlebars.registerPartial('head', headPartial);
 Handlebars.registerPartial('footer', footerPartial);
-Handlebars.registerPartial('loginForm', loginFormPartial);
+Handlebars.registerPartial('mainForm', mainFormPartial);
 Handlebars.registerPartial('header', headerPartial);
 Handlebars.registerPartial('socialButton', socialButtonPartial);
-Handlebars.registerPartial('secondLoginForm', secondLoginFormPartial);
+Handlebars.registerPartial('secondMainForm', secondMainFormPartial);
 Handlebars.registerHelper('eq', (a, b) => a === b);
 
+console.log("Partiels enregistrés :", Object.keys(Handlebars.partials));
+
+const layoutCompiled = Handlebars.compile(layoutTemplate);
 
 
 
@@ -50,7 +55,8 @@ const login = () => {
   };
   document.title = data.title;
 
-  const html = loginTemplate(data);
+  const html = layoutCompiled(data);
+
   setTimeout(initializeEvents, 0);
 
   return html;
@@ -92,14 +98,17 @@ function initializeEvents(): void {
     
     
     const dynamicContent = document.getElementById("dynamicContent");
+    console.log(dynamicContent);
+    
     if (dynamicContent) {
-      const nextStepTemplate = Handlebars.partials.secondLoginFormPartial as Handlebars.TemplateDelegate;
-      dynamicContent.innerHTML = nextStepTemplate({});
+      const secondMainFormTemplate = Handlebars.partials.secondMainForm as Handlebars.TemplateDelegate;
+      dynamicContent.innerHTML = secondMainFormTemplate({});
+     
     }
     document.getElementById("backButton")?.addEventListener("click", () => {
       if (dynamicContent) {
-        const loginFormTemplate = Handlebars.partials.loginForm as Handlebars.TemplateDelegate;
-        dynamicContent.innerHTML = loginFormTemplate({});
+        const mainFormTemplate = Handlebars.partials.mainForm as Handlebars.TemplateDelegate;
+        dynamicContent.innerHTML = mainFormTemplate({});
         initializeEvents(); 
       }
     });
