@@ -24,9 +24,9 @@ console.log("Partiels enregistrés :", Object.keys(Handlebars.partials));
 const layoutCompiled = Handlebars.compile(layoutTemplate);
 
 
+console.log(socialButtonPartial);
 
 
-const loginTemplate: Handlebars.TemplateDelegate = require("./index.hbs");
 
 const login = () => {
 
