@@ -37,6 +37,7 @@ export default {
         test: /\.hbs$/,
         loader: "handlebars-loader",
         options: {
+          runtime: 'handlebars',
           partialDirs: [
             path.join(__dirname, 'src/templates/partials')
           ],

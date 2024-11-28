@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000;
 
 // Define all your allowed origins
 const allowedOrigins = [
-  'http://localhost:8080',  // Your frontend
-  'http://localhost:5001',  // Your API
+  'http://localhost:8080',  
+  'http://localhost:5001', 
   'https://fonts.gstatic.com',
   
 ];

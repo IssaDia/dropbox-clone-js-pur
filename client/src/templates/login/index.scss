@@ -247,3 +247,78 @@
     font-size: 30px;
   }
 }
+
+.registration-form {
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.registration-form__back {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.registration-form__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.registration-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-form__label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.registration-form__input {
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registration-form__checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.registration-form__checkbox label {
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.registration-form__terms {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.registration-form__terms a {
+  color: #007ee5;
+  text-decoration: none;
+}
+
+.registration-form__button {
+  background-color: #007ee5;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.registration-form__button:hover {
+  background-color: #005bb5;
+}

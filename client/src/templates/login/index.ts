@@ -19,13 +19,9 @@ Handlebars.registerPartial('socialButton', socialButtonPartial);
 Handlebars.registerPartial('secondMainForm', secondMainFormPartial);
 Handlebars.registerHelper('eq', (a, b) => a === b);
 
-console.log("Partiels enregistrés :", Object.keys(Handlebars.partials));
-
-const layoutCompiled = Handlebars.compile(layoutTemplate);
-
-
-console.log(socialButtonPartial);
-
+const layoutCompiled = typeof layoutTemplate === 'function' 
+  ? layoutTemplate 
+  : Handlebars.compile(layoutTemplate);
 
 
 const login = () => {
