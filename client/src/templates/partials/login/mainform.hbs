@@ -1,14 +1,11 @@
-  <main class="main" id="dynamicContent">
-            <h1 class="main__title">Log in or sign up</h1>
-            <div class="main__buttons">
-              {{> socialButton }} 
-            </div>
-            <div class="main__separator">
-                <span class="main__line"></span>
-                <span class="main__text">or</span>
-                <span class="main__line"></span>
-            </div>
-            <div >
-              {{> ../partials/login/loginForm }}
-            </div>
-        </main>
+
+<h1 class="main__title">Log in or sign up</h1>
+<div class="main__buttons">
+{{> socialButton }} </div>
+<div class="main__separator">
+<span class="main__line"></span>
+<span class="main__text">or</span>
+<span class="main__line"></span>
+</div>
+<div>{{> loginForm }}</div>
+       
