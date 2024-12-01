@@ -2,20 +2,13 @@ import GoogleAuth from "../../providers/auth/google/GoogleAuth";
 import MailAuth from "../../providers/auth/mail/MailAuth";
 import "./index.scss";
 import Handlebars from "handlebars";
-import headPartial from "../partials/login/head.hbs";
-import footerPartial from "../partials/login/footer.hbs";
 import mainFormPartial from "../partials/login/mainForm.hbs";
-import headerPartial from "../partials/login/header.hbs";
-import socialButtonPartial from "../partials/login/socialButton.hbs";
 import secondMainFormPartial from "../partials/login/secondMainForm.hbs";
-import layoutTemplate from "../partials/login/layout.hbs";
+import layoutTemplate from "../partials/login/authLayout.hbs";
 
 
-Handlebars.registerPartial('head', headPartial);
-Handlebars.registerPartial('footer', footerPartial);
 Handlebars.registerPartial('mainForm', mainFormPartial);
-Handlebars.registerPartial('header', headerPartial);
-Handlebars.registerPartial('socialButton', socialButtonPartial);
+
 Handlebars.registerPartial('secondMainForm', secondMainFormPartial);
 Handlebars.registerHelper('eq', (a, b) => a === b);
 
@@ -80,36 +73,68 @@ const handleRegister =  (event: Event) => {
 
 (window as any).handleRegister = handleRegister;
 
+let submitHandler: ((event: Event) => void) | null = null;
+let backHandler: (() => void) | null = null;
+
 function initializeEvents(): void {
-  const buttons = document.querySelectorAll(".main__button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", (event) => handleRegister(event));
-  });
+   // Clear previous handlers if they exist
+   if (submitHandler) {
+     const form = document.getElementById("emailForm");
+     form?.removeEventListener('submit', submitHandler);
+   }
+   
+   if (backHandler) {
+     const backButton = document.getElementById("backButton");
+     backButton?.removeEventListener('click', backHandler);
+   }
 
-  const form = document.getElementById("emailForm");
+   // Social buttons event listeners
+   const buttons = document.querySelectorAll(".main__button");
+   buttons.forEach((button) => {
+     // Remove all existing click listeners first
+     button.removeEventListener("click", handleRegister);
+     button.addEventListener("click", handleRegister);
+   });
 
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
+   const form = document.getElementById("emailForm");
+   const backButton = document.getElementById("backButton");
+   const dynamicContent = document.getElementById("dynamicContent");
 
-    
-    
-    const dynamicContent = document.getElementById("dynamicContent");
-    console.log(dynamicContent);
-    
-    if (dynamicContent) {
-      const secondMainFormTemplate = Handlebars.partials.secondMainForm as Handlebars.TemplateDelegate;
-      dynamicContent.innerHTML = secondMainFormTemplate({});
+   // Create new submit handler
+   submitHandler = (event: Event) => {
+     event.preventDefault();
      
-    }
-    document.getElementById("backButton")?.addEventListener("click", () => {
-      if (dynamicContent) {
-        const mainFormTemplate = Handlebars.partials.mainForm as Handlebars.TemplateDelegate;
-        dynamicContent.innerHTML = mainFormTemplate({});
-        initializeEvents(); 
-      }
-    });
-  
-  })
+     if (dynamicContent) {
+       const secondMainFormTemplate = Handlebars.partials.secondMainForm as Handlebars.TemplateDelegate;
+       dynamicContent.innerHTML = secondMainFormTemplate({});
+       
+       // Re-initialize events after content change
+       initializeEvents();
+     }
+   };
+
+   // Create new back handler
+   backHandler = () => {
+     if (dynamicContent) {
+       const mainFormTemplate = Handlebars.partials.mainForm as Handlebars.TemplateDelegate;
+       dynamicContent.innerHTML = mainFormTemplate({});
+       
+       // Remove hash from URL
+       history.replaceState(null, '', window.location.pathname);
+       
+       // Re-initialize events after content change
+       initializeEvents();
+     }
+   };
+
+   // Add new event listeners with null checks
+   if (form && submitHandler) {
+     form.addEventListener('submit', submitHandler);
+   }
+
+   if (backButton && backHandler) {
+     backButton.addEventListener('click', backHandler);
+   }
 }
 
 export default login;
