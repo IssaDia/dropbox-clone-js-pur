@@ -2,7 +2,7 @@ import { AuthProvider } from "../interfaces/AuthProviderInterface";
 
 class MailAuthController implements AuthProvider {
 
-   static async  mailAuth () {
+   static async  register () {
 
     } 
 

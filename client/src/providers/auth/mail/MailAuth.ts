@@ -1,17 +1,9 @@
 import { RegisterInterface } from "../RegisterInterface";
 
 class MailAuth implements RegisterInterface {
- public static async register(): Promise<any> {
-    try {
+ public static async register(formData: any): Promise<any> {
+console.log(formData);
 
-      const response = await fetch("http://localhost:5001/api/auth/google", {
-         credentials: "include",
-       });
-       const data = await response.json();
-
-    } catch  {
-
-    }
      
  }
 }

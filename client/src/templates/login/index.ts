@@ -135,6 +135,41 @@ function initializeEvents(): void {
    if (backButton && backHandler) {
      backButton.addEventListener('click', backHandler);
    }
+
+   document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector<HTMLFormElement>(".registration-form__form");
+    
+    if (form) {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Empêche le rechargement de la page
+  
+        // Récupérer les données du formulaire
+        const email = (document.querySelector<HTMLInputElement>("#email")?.value || "").trim();
+        const firstName = (document.querySelector<HTMLInputElement>("#firstName")?.value || "").trim();
+        const lastName = (document.querySelector<HTMLInputElement>("#lastName")?.value || "").trim();
+        const password = (document.querySelector<HTMLInputElement>("#password")?.value || "").trim();
+        const marketingConsent = document.querySelector<HTMLInputElement>("#marketingConsent")?.checked || false;
+  
+        // Créer un objet contenant les données du formulaire
+        const formData = {
+          email,
+          firstName,
+          lastName,
+          password,
+          marketingConsent,
+        };
+  
+        // Transmettre les données à votre méthode MailAuth.register()
+        try {
+          const response = await MailAuth.register(formData);
+          console.log("Données envoyées avec succès :", response);
+        } catch (error) {
+          console.error("Erreur lors de l'envoi des données :", error);
+        }
+      });
+    }
+  });
+  
 }
 
 export default login;
