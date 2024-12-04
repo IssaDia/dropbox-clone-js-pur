@@ -53,6 +53,8 @@ const login = (): string => {
 };
 
 const handleRegister = async (event: Event) => {
+ 
+  
   event.preventDefault();
   const target = event.target as HTMLElement;
   const buttonId = target.id || target.closest("button")?.id || "";
@@ -63,7 +65,7 @@ const handleRegister = async (event: Event) => {
       break;
 
     case "mail-button-id":
-      console.log("Email form registration triggered.");
+      handleSecondFormSubmit(event);
       break;
 
     default:
@@ -71,12 +73,38 @@ const handleRegister = async (event: Event) => {
   }
 };
 
+const handleSecondFormSubmit = async (event: Event) => {
+  event.preventDefault();
+
+  const form = event.target as HTMLFormElement;
+  const email = (form.querySelector<HTMLInputElement>("#email")?.value || "").trim();
+  const firstName = (form.querySelector<HTMLInputElement>("#firstName")?.value || "").trim();
+  const lastName = (form.querySelector<HTMLInputElement>("#lastName")?.value || "").trim();
+  const password = (form.querySelector<HTMLInputElement>("#password")?.value || "").trim();
+  const marketingConsent = form.querySelector<HTMLInputElement>("#marketingConsent")?.checked || false;
+
+  const formData = {
+    email,
+    firstName,
+    lastName,
+    password,
+    marketingConsent,
+  };
+
+  try {
+    const response = await MailAuth.register(formData);
+    console.log("Données envoyées avec succès :", response);
+  } catch (error) {
+    console.error("Erreur lors de l'envoi des données :", error);
+  }
+};
+
 const handleBack = (dynamicContent: HTMLElement | null) => {
   if (dynamicContent) {
     const mainFormTemplate = Handlebars.partials.mainForm as Handlebars.TemplateDelegate;
     dynamicContent.innerHTML = mainFormTemplate({});
-    history.replaceState(null, '', window.location.pathname); // Supprime le hash de l'URL
-    initializeEvents(); // Réinitialisation des événements après changement du DOM
+    history.replaceState(null, '', window.location.pathname);
+    initializeEvents(); 
   }
 };
 
@@ -115,31 +143,6 @@ const handleMainFormSubmit = async (event: Event, dynamicContent: HTMLElement | 
 
 
 // Soumission du deuxième formulaire
-const handleSecondFormSubmit = async (event: Event) => {
-  event.preventDefault();
-
-  const form = event.target as HTMLFormElement;
-  const email = (form.querySelector<HTMLInputElement>("#email")?.value || "").trim();
-  const firstName = (form.querySelector<HTMLInputElement>("#firstName")?.value || "").trim();
-  const lastName = (form.querySelector<HTMLInputElement>("#lastName")?.value || "").trim();
-  const password = (form.querySelector<HTMLInputElement>("#password")?.value || "").trim();
-  const marketingConsent = form.querySelector<HTMLInputElement>("#marketingConsent")?.checked || false;
-
-  const formData = {
-    email,
-    firstName,
-    lastName,
-    password,
-    marketingConsent,
-  };
-
-  try {
-    const response = await MailAuth.register(formData);
-    console.log("Données envoyées avec succès :", response);
-  } catch (error) {
-    console.error("Erreur lors de l'envoi des données :", error);
-  }
-};
 
 }
 
