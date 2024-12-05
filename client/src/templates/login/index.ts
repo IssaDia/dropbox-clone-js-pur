@@ -76,12 +76,18 @@ const handleRegister = async (event: Event) => {
 const handleSecondFormSubmit = async (event: Event) => {
   event.preventDefault();
 
-  const form = event.target as HTMLFormElement;
-  const email = (form.querySelector<HTMLInputElement>("#email")?.value || "").trim();
-  const firstName = (form.querySelector<HTMLInputElement>("#firstName")?.value || "").trim();
-  const lastName = (form.querySelector<HTMLInputElement>("#lastName")?.value || "").trim();
-  const password = (form.querySelector<HTMLInputElement>("#password")?.value || "").trim();
-  const marketingConsent = form.querySelector<HTMLInputElement>("#marketingConsent")?.checked || false;
+  const mailForm = document.getElementById("mail-form");;
+  if (!mailForm) {
+    console.error("Le formulaire n'a pas pu être trouvé.");
+    return;
+  }
+
+  
+  const email = (mailForm.querySelector<HTMLInputElement>("#email")?.value || "").trim();
+  const firstName = (mailForm.querySelector<HTMLInputElement>("#firstName")?.value || "").trim();
+  const lastName = (mailForm.querySelector<HTMLInputElement>("#lastName")?.value || "").trim();
+  const password = (mailForm.querySelector<HTMLInputElement>("#password")?.value || "").trim();
+  const marketingConsent = mailForm.querySelector<HTMLInputElement>("#marketingConsent")?.checked || false;
 
   const formData = {
     email,
@@ -91,12 +97,15 @@ const handleSecondFormSubmit = async (event: Event) => {
     marketingConsent,
   };
 
-  try {
-    const response = await MailAuth.register(formData);
-    console.log("Données envoyées avec succès :", response);
-  } catch (error) {
-    console.error("Erreur lors de l'envoi des données :", error);
-  }
+  console.log(formData);
+  
+
+  // try {
+  //   const response = await MailAuth.register(formData);
+  //   console.log("Données envoyées avec succès :", response);
+  // } catch (error) {
+  //   console.error("Erreur lors de l'envoi des données :", error);
+  // }
 };
 
 const handleBack = (dynamicContent: HTMLElement | null) => {
@@ -135,14 +144,16 @@ function initializeEvents(): void {
 const handleMainFormSubmit = async (event: Event, dynamicContent: HTMLElement | null) => {
   event.preventDefault();
 
+  
+
   if (dynamicContent) {
     const secondMainFormTemplate = Handlebars.partials.secondMainForm as Handlebars.TemplateDelegate;
     dynamicContent.innerHTML = secondMainFormTemplate({});
+   
+    
     initializeEvents(); 
 };
 
-
-// Soumission du deuxième formulaire
 
 }
 
