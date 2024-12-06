@@ -97,15 +97,15 @@ const handleSecondFormSubmit = async (event: Event) => {
     marketingConsent,
   };
 
-  console.log(formData);
+  
   
 
-  // try {
-  //   const response = await MailAuth.register(formData);
-  //   console.log("Données envoyées avec succès :", response);
-  // } catch (error) {
-  //   console.error("Erreur lors de l'envoi des données :", error);
-  // }
+  try {
+    const response = await MailAuth.register(formData);
+    console.log("Données envoyées avec succès :", response);
+  } catch (error) {
+    console.error("Erreur lors de l'envoi des données :", error);
+  }
 };
 
 const handleBack = (dynamicContent: HTMLElement | null) => {

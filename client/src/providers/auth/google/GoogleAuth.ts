@@ -7,14 +7,13 @@ class GoogleAuth implements RegisterInterface {
         credentials: "include",
       });
       const data = await response.json();
-      // window.open(data.url, "_blank");
+    
 
       window.location.href = data.url;
     } catch (error) {
       console.error("Failed to initiate auth:", error);
-      // window.location.href = "/";
+     
     }
-    console.log("work")
   }
 
   static async handleAuthCallback() {
