@@ -1,6 +1,6 @@
 import { Router } from "express";
 import GoogleAuthController from "./providers/GoogleAuthProvider";
-import  MailAuthController from "./providers/MailAuthProvider";
+import  MailAuthController from "./providers/MailProvider/MailProvider";
 import { checkAndRefreshToken } from "./middlewares/checkRefreshToken";
 
 const router = Router();
