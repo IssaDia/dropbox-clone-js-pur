@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/User';
+import User from '../infrastructure/database/models/User';
+
 
 const UserController = {
   async register(req: Request, res: Response) {
