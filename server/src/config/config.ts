@@ -1,4 +1,4 @@
-export default  config = {
+export  const configJson = {
   development: {
     use_env_variable: "DEV_DATABASE_URL",
     username: process.env.DB_USER || "jazzy",

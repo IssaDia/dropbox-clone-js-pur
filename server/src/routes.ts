@@ -17,6 +17,6 @@ router.get("/auth/google/callback", (req, res) => googleAuthController.googleAut
 router.get("/auth/token", (req, res) => googleAuthController.getAuthToken(req, res));
 
 
-router.post("/auth/mail", (req, res) => mailAuthController.register(req, res));
+// router.post("/auth/mail", (req, res) => mailAuthController.register(req, res));
 
 export default router;

@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import { Config } from '../../../interfaces/ConfigInterface';
-import configJson from '../../../config/config.json';
+import { configJson }  from '../../../config/config';
 
 type Environment = 'development' | 'test' | 'production';
 
