@@ -20,12 +20,12 @@ const sequelize = config.use_env_variable && process.env[config.use_env_variable
       password: password,
       host: config.host,
       dialect: dialect,
-      port: 5433,
+      port: 5432,
     })
   : new Sequelize(config.database, config.username, password, {
       host: config.host,
       dialect: dialect,
-      port: 5433,
+      port: 5432,
     });
 
 export { sequelize };

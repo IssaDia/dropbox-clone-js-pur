@@ -87,11 +87,7 @@ app.listen(port, () => {
   try {
     await sequelize.authenticate();
     console.log('Connexion à la base de données réussie.');
-
-    // Démarrage du serveur
-    app.listen(port, () => {
-      console.log(`Server listening on port ${port}`);
-    });
+  
   } catch (error) {
     console.error('Impossible de se connecter à la base de données :', error);
     process.exit(1); // Arrête le processus en cas d'échec

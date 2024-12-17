@@ -5,6 +5,7 @@ export  const configJson = {
     password: process.env.DB_PASSWORD || "dropbox_clone",
     database: process.env.DB_NAME || "dropbox",
     host: "127.0.0.1",
+    port: parseInt(process.env.DB_PORT || "5432", 10),
     dialect: process.env.DB_DIALECT || "postgres"
   },
   test: {
