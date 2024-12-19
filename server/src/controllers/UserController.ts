@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 import User from '../infrastructure/database/models/User';
 import { body, validationResult } from 'express-validator';
 
-const UserController = {
-  async register(req: Request, res: Response) {
+class UserController {
+   register = async (req: Request, res: Response) : Promise<Response<any>> => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -33,9 +33,9 @@ const UserController = {
       console.error(error);
       return res.status(500).json({ message: 'Erreur interne du serveur' });
     }
-  },
+  }
 
-  async login(req: Request, res: Response) {
+   login = async  (req: Request, res: Response) : Promise<Response<any>>  =>{
     try {
       const { email, password } = req.body;
 
@@ -64,7 +64,7 @@ const UserController = {
       console.error(error);
       return res.status(500).json({ message: 'Erreur interne du serveur' });
     }
-  },
+  }
 };
 
 export default UserController;
