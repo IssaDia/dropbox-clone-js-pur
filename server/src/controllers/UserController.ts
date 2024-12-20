@@ -5,7 +5,11 @@ import User from '../infrastructure/database/models/User';
 import { body, validationResult } from 'express-validator';
 
 class UserController {
-   register = async (req: Request, res: Response) : Promise<Response<any>> => {
+  constructor() {
+    this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
+  }
+   async register(req: Request, res: Response) : Promise<Response<any>>  {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -35,7 +39,7 @@ class UserController {
     }
   }
 
-   login = async  (req: Request, res: Response) : Promise<Response<any>>  =>{
+   async login(req: Request, res: Response): Promise<Response<any>> {
     try {
       const { email, password } = req.body;
 

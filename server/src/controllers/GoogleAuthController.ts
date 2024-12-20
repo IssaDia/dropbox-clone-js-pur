@@ -13,7 +13,7 @@ declare module "express-session" {
   }
 }
 
- class GoogleAuthProvider implements AuthProvider {
+ class GoogleAuthController implements AuthProvider {
   private oauth2Client: OAuth2Client;
 
   constructor() {
@@ -121,4 +121,4 @@ declare module "express-session" {
 
 
 
-export default GoogleAuthProvider;
+export default GoogleAuthController;

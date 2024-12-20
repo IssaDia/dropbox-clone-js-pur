@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import GoogleAuthProvider from "../providers/GoogleAuthProvider";
+import GoogleAuthProvider from "../controllers/GoogleAuthController";
 import jwt from "jsonwebtoken";
 
 export const checkAndRefreshToken = async (req: Request, res: Response, next: Function) => {
