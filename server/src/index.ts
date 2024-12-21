@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Define all your allowed origins
+// Define all your allowed origins  
 const allowedOrigins = [
   'http://localhost:8080',  
   'http://localhost:5001', 
@@ -22,23 +22,20 @@ const allowedOrigins = [
 
 const corsMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const origin = req.headers.origin;
-  
-  // Allow the specific origin if it's in our whitelist
+  console.log("Request Origin: ", origin);
+
   if (origin && allowedOrigins.includes(origin)) {
+    console.log("CORS allowed for origin: ", origin);
     res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    console.warn("CORS blocked for origin: ", origin);
   }
   
-  // Required for credentials
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  
-  // Allow these headers
   res.setHeader('Access-Control-Allow-Headers', 
     'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  
-  // Allow these methods
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  
-  // Handle preflight
+
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
@@ -48,7 +45,7 @@ const corsMiddleware = (req: Request, res: Response, next: NextFunction): void =
 };
 
 
-app.use(corsMiddleware);
+
 
 
 // Session configuration
@@ -66,6 +63,10 @@ app.use(
   })
 );
 
+app.options('*', corsMiddleware);
+
+
+app.use(corsMiddleware);
 app.use(express.json());
 app.use("/api", routes);
 
@@ -90,6 +91,6 @@ app.listen(port, () => {
   
   } catch (error) {
     console.error('Impossible de se connecter à la base de données :', error);
-    process.exit(1); // Arrête le processus en cas d'échec
+    process.exit(1);
   }
 })();

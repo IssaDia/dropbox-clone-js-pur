@@ -10,6 +10,8 @@ class UserController {
     this.login = this.login.bind(this);
   }
    async register(req: Request, res: Response) : Promise<Response<any>>  {
+    console.log("body",req.body);
+    
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
