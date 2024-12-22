@@ -1,11 +1,13 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from './index';
+
 class User extends Model {
   public id!: number;
   public email!: string;
   public password!: string;
-  public name!: string;
-  public surname!: string;
+  public firstName!: string;
+  public lastName!: string;
+  public marketingConsent!: boolean;
 
   // Timestamps
   public readonly createdAt!: Date;
@@ -31,13 +33,18 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    surname: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    marketingConsent: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
   },
   {
