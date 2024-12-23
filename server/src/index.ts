@@ -10,45 +10,30 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Define all your allowed origins  
+// CORS Configuration
 const allowedOrigins = [
-  'http://localhost:8080',  
-  'http://localhost:5001', 
+  'http://localhost:8080',
+  'http://localhost:5001',
   'https://fonts.gstatic.com',
-  
 ];
 
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.warn("CORS blocked for origin: ", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+app.use(express.json());
 
 
-const corsMiddleware = (req: Request, res: Response, next: NextFunction): void => {
-  const origin = req.headers.origin;
-  console.log("Request Origin: ", origin);
-
-  if (origin && allowedOrigins.includes(origin)) {
-    console.log("CORS allowed for origin: ", origin);
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    console.warn("CORS blocked for origin: ", origin);
-  }
-  
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Headers', 
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-  
-  next();
-};
-
-
-
-
-
-// Session configuration
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "your-secret-key",
@@ -58,39 +43,40 @@ app.use(
       secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24, // 24 hours
-      sameSite: 'lax'
-    }
+      sameSite: 'lax',
+    },
   })
 );
 
-app.options('*', corsMiddleware);
 
-
-app.use(corsMiddleware);
-app.use(express.json());
 app.use("/api", routes);
 
-// Error handling middleware
+
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
+  console.error("Error stack: ", err.stack);
   res.status(err.status || 500).json({
-    error: process.env.NODE_ENV === 'production' 
-      ? 'Internal Server Error' 
-      : err.message
+    error: process.env.NODE_ENV === 'production'
+      ? 'Internal Server Error'
+      : err.message,
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
 
-(async () => {
+const startServer = async () => {
   try {
     await sequelize.authenticate();
-    console.log('Connexion à la base de données réussie.');
-  
+    console.log('Connected to the database.');
+
+    await sequelize.sync({ alter: true });
+    console.log('Database models synchronized.');
+
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
   } catch (error) {
-    console.error('Impossible de se connecter à la base de données :', error);
+    console.error('Database connection failed:', error);
     process.exit(1);
   }
-})();
+};
+
+startServer();
