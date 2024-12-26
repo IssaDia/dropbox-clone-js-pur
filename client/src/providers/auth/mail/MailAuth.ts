@@ -14,7 +14,7 @@ try {
         body: JSON.stringify(formData)
     });
 
-    // const data = await response.json();
+    const data = await response.json();
 
    
 
