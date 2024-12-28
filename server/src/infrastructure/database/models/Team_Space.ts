@@ -11,4 +11,25 @@ class Team_Space extends Model {
 }
 
 
+Team_Space.init({
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  team_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  space_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+}, {
+  sequelize,
+  tableName: 'team_space',
+  timestamps: true,
+});
+
+
 export default Team_Space;
