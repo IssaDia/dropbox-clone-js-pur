@@ -1,5 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from './index';
+import User_team_Space from './User_team_Space';
+import Team_Space from './Team_Space';
 
 class User extends Model {
   public id!: number;
@@ -53,5 +55,9 @@ User.init(
     timestamps: true,
   }
 );
+
+User.hasMany(User_team_Space, { foreignKey: 'user_id' });
+User.belongsToMany(Team_Space, { through: User_team_Space, foreignKey: 'user_id' });
+
 
 export default User;

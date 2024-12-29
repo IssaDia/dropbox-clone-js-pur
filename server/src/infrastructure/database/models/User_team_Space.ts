@@ -1,5 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from './index';
+import User from './User';
+import Team_Space from './Team_Space';
 
 class User_team_Space extends Model {
   public id!: number;
@@ -28,6 +30,10 @@ User_team_Space.init({
   tableName: 'user_team_space',
   timestamps: true,
 });
+
+User_team_Space.belongsTo(User, { foreignKey: 'user_id' });
+User_team_Space.belongsTo(Team_Space, { foreignKey: 'team_space_id' });
+
 
 
 export default User_team_Space;
