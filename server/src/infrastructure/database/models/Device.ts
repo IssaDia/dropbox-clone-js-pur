@@ -4,25 +4,25 @@ import { sequelize } from './index';
 
 class Device extends Model {
     public id!: number;
-    public name!: string;
-    public description!: string;
+    public user_id!: number;
+    public last_signed_in!: number;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
 
 Device.init({  
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         autoIncrement: true,
         primaryKey: true,
     },
-    name: {
-        type: DataTypes.STRING,
+    user_id: {
+        type: DataTypes.UUID,
         allowNull: false,
         unique: true,
     },
-    description: {
-        type: DataTypes.STRING,
+    last_signed_in: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 }, {

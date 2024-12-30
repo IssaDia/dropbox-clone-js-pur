@@ -3,25 +3,29 @@ import { sequelize } from './index';
 
 class Object_History extends Model {
     public id!: number;
-    public name!: string;
-    public description!: string;
+    public object_id!: number;
+    public device_id!: number;
+    public history_number!: number;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
 
 Object_History.init({
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
-    name: {
-        type: DataTypes.STRING,
+    object_id: {
+        type: DataTypes.UUID,
         allowNull: false,
-        unique: true,
     },
-    description: {
-        type: DataTypes.STRING,
+    device_id: {
+        type: DataTypes.UUID,
+        allowNull: false,
+    },
+    history_number: {
+        type: DataTypes.BIGINT,
         allowNull: false,
     },
 }, {

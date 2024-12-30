@@ -13,16 +13,16 @@ class User_team_Space extends Model {
 
 User_team_Space.init({
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     autoIncrement: true,
     primaryKey: true,
   },
   user_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     allowNull: false,
   },
   team_space_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     allowNull: false,
   },
 }, {

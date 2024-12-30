@@ -1,28 +1,29 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from './index';
+import Object_History from './Object_History';
 
 
 class Block extends Model {
   public id!: number;
-  public name!: string;
-  public description!: string;
+  public object_history_id!: number;
+  public block_position!: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
 
 Block.init({
   id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  name: {
-    type: DataTypes.STRING,
+  object_history_id: {
+    type: DataTypes.UUID,
     allowNull: false,
-    unique: true,
+    
   },
-  description: {
-    type: DataTypes.STRING,
+  block_position: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
 }, {
