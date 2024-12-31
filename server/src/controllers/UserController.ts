@@ -38,8 +38,20 @@ class UserController {
         marketingConsent,
       });
 
+      const tokenPayload = {
+        userId: user.id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      };
+
+      const customToken = jwt.sign(tokenPayload, process.env.JWT_SECRET || 'secret', {
+        expiresIn: '7d',
+      });
+
       return res.status(201).json({
         message: 'Utilisateur enregistré avec succès',
+        token: customToken,
         user: {
           id: user.id,
           email: user.email,
