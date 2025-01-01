@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from './index';
+import { sequelize } from './sequelizeInstance';
 import User from './User';
 import Team_Space from './Team_Space';
 
@@ -31,8 +31,6 @@ User_team_Space.init({
   timestamps: true,
 });
 
-User_team_Space.belongsTo(User, { foreignKey: 'user_id' });
-User_team_Space.belongsTo(Team_Space, { foreignKey: 'team_space_id' });
 
 
 

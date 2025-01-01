@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from './index';
+import { sequelize } from './sequelizeInstance';
 
 class Object_History extends Model {
     public id!: number;

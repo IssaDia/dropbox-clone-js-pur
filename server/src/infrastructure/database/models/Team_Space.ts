@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from './index';
+import { sequelize } from './sequelizeInstance';
 import User_team_Space from './User_team_Space';
 import User from './User';
 

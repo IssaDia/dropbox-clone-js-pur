@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from './index';
+import { sequelize } from './sequelizeInstance';
 import Object_History from './Object_History';
 
 

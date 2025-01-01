@@ -1,11 +1,5 @@
 import { Sequelize } from 'sequelize';
-import ObjectHistory  from './Object_History';
-import Block from './Block';
-import Object from './Object';
-import TeamSpace from './Team_Space';
-import User from './User';
-import UserTeamSpace from './User_team_Space';
-import Device from './Device';
+
 import { Config } from '../../../interfaces/ConfigInterface';
 import { configJson }  from '../../../config/config';
 
@@ -34,6 +28,15 @@ const sequelize = config.use_env_variable && process.env[config.use_env_variable
       dialect: dialect,
       port: 5432,
     });
+
+
+  import ObjectHistory  from './Object_History';
+  import Block from './Block';
+  import Object from './Object';
+  import TeamSpace from './Team_Space';
+  import User from './User';
+  import UserTeamSpace from './User_team_Space';
+  import Device from './Device';
 
 ObjectHistory.hasMany(Block, { foreignKey: 'object_history_id' });
 Block.belongsTo(ObjectHistory, { foreignKey: 'object_history_id' });
